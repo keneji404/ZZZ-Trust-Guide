@@ -111,7 +111,7 @@ export default function FilterableGrid({
                 >
                   <div className="p-1 rounded-full transition-all duration-200 flex items-center justify-center bg-item-background">
                     <img
-                      src={`/rarity/${rarity.toLowerCase()}.webp`}
+                      src={`/rarity/${rarity}.webp`}
                       alt={rarity}
                       className="w-5 h-5 object-contain"
                     />
@@ -146,7 +146,7 @@ export default function FilterableGrid({
                 >
                   <div className="p-1 rounded-full transition-all duration-200 flex items-center justify-center bg-item-background">
                     <img
-                      src={`/attribute/${attr.toLowerCase()}.webp`}
+                      src={`/attribute/${attr}.webp`}
                       alt={attr}
                       className="w-5 h-5 object-contain"
                     />
@@ -181,7 +181,7 @@ export default function FilterableGrid({
                 >
                   <div className="p-1 rounded-full transition-all duration-200 flex items-center justify-center bg-item-background">
                     <img
-                      src={`/specialty/${spec.toLowerCase()}.webp`}
+                      src={`/specialty/${spec}.webp`}
                       alt={spec}
                       className="w-5 h-5 object-contain"
                     />
