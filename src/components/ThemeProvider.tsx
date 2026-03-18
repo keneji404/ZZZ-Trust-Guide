@@ -19,7 +19,7 @@ export default function ThemeProvider({
   }
 
   return (
-    <NextThemesProvider defaultTheme="dark" element="data-theme">
+    <NextThemesProvider defaultTheme="dark" attribute="data-theme">
       {children}
     </NextThemesProvider>
   );
