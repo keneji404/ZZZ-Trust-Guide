@@ -1,0 +1,159 @@
+@import "tailwindcss";
+
+@theme {
+  /* base ui */
+  --color-background: var(--bg);
+  --color-foreground: var(--fg);
+  --color-surface: var(--surface);
+  --color-border-soft: var(--border-soft);
+  --background-image-surface-grad: var(--surface-gradient);
+  --shadow-surface: var(--surface-shadow);
+  --font-zzz: var(--font-zzz), sans-serif;
+
+  /* buttons */
+  --color-item-background: var(--item-background);
+  --color-item-active: var(--item-active);
+  --background-image-item-inactive: var(--item-inactive);
+  --color-item-hover: var(--item-hover);
+  --background-image-item-hover-grad: var(--item-hover-grad);
+  --color-border-hover: var(--border-hover);
+
+  /* event tabs */
+  --background-image-tab-active: var(--tab-active);
+  --shadow-tab-highlight: var(--tab-highlight);
+  --shadow-tab-innershadow: var(--tab-innershadow);
+  --color-bg-hole: var(--bg-hole);
+
+  --animate-marquee: marquee 50s linear infinite;
+  --animate-marquee-reverse: marquee-reverse 12s linear infinite;
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+  @keyframes marquee-reverse {
+    0% {
+      transform: translateX(-50%);
+    }
+    100% {
+      transform: translateX(0%);
+    }
+  }
+}
+
+/* themes */
+:root {
+  --bg: #262626;
+  --fg: #ffffff;
+  --surface: #444444;
+  --border-soft: #000000;
+  --surface-gradient: linear-gradient(130deg, #737373 0%, #464646 100%);
+  --surface-shadow:
+    0 4px 4px 0 rgba(0, 0, 0, 0.5), inset 2px 2px 4px 0 rgb(217, 217, 217);
+  --item-background: #000000;
+  --item-active: #beff01;
+
+  --item-inactive: linear-gradient(130deg, #444444 0%, #313131 100%);
+  --item-hover: var(--item-active);
+  --item-hover-grad: linear-gradient(130deg, #bbbbbb 0%, #313131 100%);
+  --border-hover: #bbbbbb;
+  --tab-active: linear-gradient(130deg, #f1c939 0%, #dab300 100%);
+  --tab-highlight:
+    inset 0 -2px 4px 0 rgba(0, 0, 0, 0.5),
+    inset 2px 2px 4px 0 rgb(217, 217, 217);
+  --tab-innershadow: inset 0px -8px 1px -4px rgba(0, 0, 0, 0.5);
+  --bg-hole: #2c2c2c;
+}
+
+[data-theme="dark"] {
+  --bg: #262424;
+  --fg: #eee5da;
+  --surface: #444444;
+  --border-soft: #000000;
+  --surface-gradient: linear-gradient(130deg, var(--bg) 0%, var(--bg) 100%);
+  --surface-shadow:
+    0 0 0 0 rgba(0, 0, 0, 0.5), inset 0 0 0 0 rgb(217, 217, 217);
+  --item-background: var(--bg);
+  --item-active: var(--fg);
+  --item-inactive: linear-gradient(
+    130deg,
+    var(--surface) 0%,
+    var(--surface) 100%
+  );
+  --item-hover: #ffffff;
+  --item-hover-grad: linear-gradient(130deg, var(--fg) 0%, var(--surface) 100%);
+  --border-hover: var(--fg);
+  --tab-active: linear-gradient(130deg, var(--fg) 0%, var(--fg) 100%);
+  --tab-highlight:
+    inset 0 -2px 4px 0 rgba(0, 0, 0, 0.5),
+    inset 2px 2px 4px 0 rgb(217, 217, 217);
+  --tab-innershadow: inset 0px -8px 1px -4px #262424;
+  --bg-hole: #444444;
+}
+
+[data-theme="arcade"] {
+  --bg: #211b58;
+  --fg: #ffffff;
+  --surface: #ada2ff;
+  --border-soft: #000000;
+  --surface-gradient: linear-gradient(
+    130deg,
+    var(--surface) 0%,
+    var(--surface) 100%
+  );
+  --surface-shadow:
+    0 4px 4px 0 rgba(0, 0, 0, 0.5), inset 2px 2px 4px 0 var(--fg);
+  --item-background: var(--bg);
+  --item-active: #fa66a5;
+  --item-inactive: linear-gradient(
+    130deg,
+    var(--surface) 0%,
+    var(--surface) 100%
+  );
+  --item-hover: var(--item-active);
+  --item-hover-grad: linear-gradient(130deg, #f79cc3 0%, var(--surface) 100%);
+  --border-hover: #f79cc3;
+  --tab-active: linear-gradient(130deg, #f79cc3 0%, #fa66a5 100%);
+  --tab-highlight:
+    inset 0 -2px 4px 0 rgba(0, 0, 0, 0.5),
+    inset 2px 2px 4px 0 rgb(217, 217, 217);
+  --tab-innershadow: inset 0px -8px 1px -4px rgba(0, 0, 0, 0.5);
+  --bg-hole: #5b5587;
+}
+
+/* apply theme */
+@layer base {
+  * {
+    scrollbar-width: thin;
+    cursor: url("/zzz_cursor.png"), auto;
+  }
+  body {
+    background: var(--bg);
+    background-image: url("/bg-pattern.png"), pointer;
+    background-attachment: fixed;
+    color: var(--fg);
+    transition:
+      background-color 0.3s ease,
+      color 0.3s ease;
+  }
+}
+
+.glass-highlight {
+  box-shadow: inset 0 6px 4px -5px rgb(217, 217, 217);
+}
+
+.bg-dotted-pattern {
+  background-image: url("/bg-pattern.png");
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}
