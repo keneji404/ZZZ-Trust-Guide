@@ -19,7 +19,7 @@ export default function AgentProfileLayout({ agent }: { agent: Agent }) {
   const displayAttr = agent.specialAttribute || agent.attribute;
 
   // to load faction emblem image file
-  const factionImageName = agent.faction.toLowerCase().replace(/\s+/g, "_");
+  const factionImageName = agent.faction.replace(/\s+/g, "_");
 
   // agent pfp swap feature
   const [activeImageIndex, setActiveImageIndex] = useState(0);
@@ -266,7 +266,7 @@ export default function AgentProfileLayout({ agent }: { agent: Agent }) {
                }`}
             >
               <img
-                src={`/faction/${agent.faction.toLowerCase().replace(/\s+/g, "_")}.webp`}
+                src={`/faction/${agent.faction.replace(/\s+/g, "_")}.webp`}
                 alt={agent.faction.charAt(0)}
                 className="w-full h-full text-xs"
               />
@@ -321,7 +321,7 @@ export default function AgentProfileLayout({ agent }: { agent: Agent }) {
                     >
                       {/* faction image */}
                       <img
-                        src={`/faction/${a.faction.toLowerCase().replace(/\s+/g, "_")}.webp`}
+                        src={`/faction/${a.faction.replace(/\s+/g, "_")}.webp`}
                         alt={`${a.faction}`}
                         className="p-1 absolute inset-0 w-full h-full object-contain object-left opacity-50 pointer-events-none z-0"
                       />
