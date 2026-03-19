@@ -66,7 +66,7 @@ export default function EventCard({ event }: { event: TrustEvent }) {
 
       {/* answers */}
       <div className="space-y-2">
-        {event.choices.map(
+        {event.choices?.map(
           (
             choice: {
               isOptimal: any;

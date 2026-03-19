@@ -8,7 +8,7 @@ export type TrustEvent = {
   type: "Invites" | "Wish" | "Fun" | "Random";
   title: string;
   location: string;
-  choices: DialogueChoice[];
+  choices?: DialogueChoice[];
 };
 
 export type Agent = {
@@ -54,68 +54,7 @@ export const agentsData: Agent[] = [
     color: "#ffabc6",
     images: ["/agent/Anby_Demara.webp", "/agent/Soldier_0_-_Anby.webp"],
     version: "1.0",
-    events: [
-      // --- INVITES ---
-      {
-        id: "anby_inv_01",
-        type: "Invites",
-        title: "Burger Time",
-        location: "Sixth Street - Waterfall Soup",
-        choices: [
-          { text: "Let's get the Premium Burger.", isOptimal: true },
-          { text: "A salad sounds good.", isOptimal: false },
-        ],
-      },
-      {
-        id: "anby_inv_02",
-        type: "Invites",
-        title: "Noodle Run",
-        location: "Sixth Street - Waterfall Soup",
-        choices: [
-          { text: "Extra spicy beef noodles!", isOptimal: true },
-          { text: "Just plain broth is fine.", isOptimal: false },
-        ],
-      },
-      // --- WISH ---
-      {
-        id: "anby_wish_01",
-        type: "Wish",
-        title: "Movie Marathon",
-        location: "Random Play",
-        choices: [
-          { text: "Let's watch a Starlight Knight movie.", isOptimal: true },
-          { text: "How about a slow romantic comedy?", isOptimal: false },
-        ],
-      },
-      // --- FUN ---
-      {
-        id: "anby_fun_01",
-        type: "Fun",
-        title: "High Scores",
-        location: "Sixth Street - Godfinger Arcade",
-        choices: [
-          { text: "I'll take you on in Soul Hounds!", isOptimal: true },
-          { text: "You play, I'll just watch from here.", isOptimal: false },
-        ],
-      },
-      // --- RANDOM ---
-      {
-        id: "anby_rnd_01",
-        type: "Random",
-        title: "Late Night Snack",
-        location: "Sixth Street - 141 Convenience Store",
-        choices: [
-          {
-            text: "Buy her the limited edition energy drink.",
-            isOptimal: true,
-          },
-          {
-            text: "Pretend you didn't see her and walk past.",
-            isOptimal: false,
-          },
-        ],
-      },
-    ],
+    events: [],
   },
   {
     id: "anton",
@@ -140,7 +79,207 @@ export const agentsData: Agent[] = [
     color: "#ff93a7",
     images: ["/agent/Aria.webp", "/outfit/Aria_Discordant_Note.webp"],
     version: "2.6",
-    events: [],
+    events: [
+      // INVITATION EVENTS
+      {
+        id: "aria_inv_01",
+        type: "Invites",
+        title: "Exclusive Reward",
+        location: "Lumina Square",
+        choices: [
+          {
+            text: "Richard Teamilk, Rich in Tea, Rich in Milk...",
+            isOptimal: true,
+          },
+        ],
+      },
+      {
+        id: "aria_inv_02",
+        type: "Invites",
+        title: "Performing a Divination",
+        location: "Failume Heights",
+        choices: [{ text: "(Choices don't matter)", isOptimal: true }],
+      },
+      {
+        id: "aria_inv_03",
+        type: "Invites",
+        title: "Seaside Stroll",
+        location: "Fantasy Resort",
+        choices: [{ text: "(Choices don't matter)", isOptimal: true }],
+      },
+      {
+        id: "aria_inv_04",
+        type: "Invites",
+        title: "Secret Audience",
+        location: "Blazewood",
+        choices: [{ text: "(Choices don't matter)", isOptimal: true }],
+      },
+      // WISH EVENTS
+      {
+        id: "aria_wish_01",
+        type: "Wish",
+        title: "Memories of the Past",
+        location: "Lumina Square - Capsule Hotel",
+      },
+      {
+        id: "aria_wish_02",
+        type: "Wish",
+        title: "Soul Resonance",
+        location: "Fantasy Resort - Stage Area",
+      },
+      {
+        id: "aria_wish_03",
+        type: "Wish",
+        title: "Singing Haven",
+        location: "Blazewood - Cliffside",
+      },
+      {
+        id: "aria_wish_04",
+        type: "Wish",
+        title: "A Dream Stage",
+        location: "Sixth Street - 404 Error",
+      },
+      {
+        id: "aria_wish_05",
+        type: "Wish",
+        title: "Echoes from the Alley",
+        location: "Lumina Square - Alley",
+      },
+      // FUN EVENTS
+      {
+        id: "aria_fun_01",
+        type: "Fun",
+        title: "Cheesetopia",
+        location: "Blazewood",
+      },
+      {
+        id: "aria_fun_02",
+        type: "Fun",
+        title: "Fantasy Boutique Shop",
+        location: "Fantasy Resort",
+      },
+      {
+        id: "aria_fun_03",
+        type: "Fun",
+        title: "Floatie Ice Cream Booth at the Beach",
+        location: "Fantasy Resort",
+      },
+      {
+        id: "aria_fun_04",
+        type: "Fun",
+        title: "Archipelago Shoot",
+        location: "Fantasy Resort",
+      },
+      {
+        id: "aria_fun_05",
+        type: "Fun",
+        title: "Bangboo Charging Station at the Parking Lot",
+        location: "Lumina Square",
+      },
+      {
+        id: "aria_fun_06",
+        type: "Fun",
+        title: "Beaverson Beauty Salon",
+        location: "Lumina Square",
+      },
+      {
+        id: "aria_fun_07",
+        type: "Fun",
+        title: "Traffie Bangboo near Mewmew",
+        location: "Lumina Square",
+      },
+      {
+        id: "aria_fun_08",
+        type: "Fun",
+        title: "SREC Wall Ad",
+        location: "Lumina Square",
+      },
+      {
+        id: "aria_fun_09",
+        type: "Fun",
+        title: "Waterfall Soup",
+        location: "Sixth Street",
+      },
+      {
+        id: "aria_fun_10",
+        type: "Fun",
+        title: "Convenience Store",
+        location: "Sixth Street",
+      },
+      // RANDOM ENCOUNTERS
+      {
+        id: "aria_rnd_01",
+        type: "Random",
+        title: "Souvenir Shop",
+        location: "Fantasy Resort (Morning - Afternoon)",
+        choices: [
+          {
+            text: "(Choices don't matter)",
+            isOptimal: true,
+          },
+        ],
+      },
+      {
+        id: "aria_rnd_02",
+        type: "Random",
+        title: "141 Convenience Store",
+        location: "Lumina Square (Morning - Afternoon)",
+        choices: [
+          {
+            text: "(Choices don't matter)",
+            isOptimal: true,
+          },
+        ],
+      },
+      {
+        id: "aria_rnd_03",
+        type: "Random",
+        title: "Old Duyi's Physiotheraphy Studio",
+        location: "Lumina Square (Morning - Afternoon)",
+        choices: [
+          {
+            text: "(Choices don't matter)",
+            isOptimal: true,
+          },
+        ],
+      },
+      {
+        id: "aria_rnd_04",
+        type: "Random",
+        title: "Public Security Office",
+        location: "Lumina Square (Morning - Afternoon)",
+        choices: [
+          {
+            text: "(Choices don't matter)",
+            isOptimal: true,
+          },
+        ],
+      },
+      {
+        id: "aria_rnd_05",
+        type: "Random",
+        title: "Port Promenade",
+        location: "Port Elpis",
+        choices: [
+          {
+            text: "(Choices don't matter)",
+            isOptimal: true,
+          },
+        ],
+      },
+      {
+        id: "aria_rnd_06",
+        type: "Random",
+        title: "Godfinger",
+        location: "Sixth Street",
+        choices: [
+          {
+            text: "(Choices don't matter)",
+            isOptimal: true,
+          },
+        ],
+      },
+    ],
   },
   {
     id: "astra",
@@ -191,42 +330,7 @@ export const agentsData: Agent[] = [
     color: "#ffabc6",
     images: ["/agent/Billy_Kid.webp"],
     version: "1.0",
-    events: [
-      // --- INVITES ---
-      {
-        id: "billy_inv_01",
-        type: "Invites",
-        title: "Toy Store Run",
-        location: "Lumina Square - Box Galaxy",
-        choices: [
-          {
-            text: "Wow, is that the limited Starlight Knight figure?",
-            isOptimal: true,
-          },
-          {
-            text: "Aren't you a bit old for action figures?",
-            isOptimal: false,
-          },
-        ],
-      },
-      // --- RANDOM ---
-      {
-        id: "billy_rnd_01",
-        type: "Random",
-        title: "Gun Maintenance",
-        location: "Sixth Street - Back Alley",
-        choices: [
-          {
-            text: "Your revolvers are looking incredibly sharp!",
-            isOptimal: true,
-          },
-          {
-            text: "Please don't point those things anywhere near me.",
-            isOptimal: false,
-          },
-        ],
-      },
-    ],
+    events: [],
   },
   {
     id: "burnice",
@@ -627,7 +731,207 @@ export const agentsData: Agent[] = [
     color: "#ff93a7",
     images: ["/agent/Sunna.webp", "/outfit/Sunna_Afternoon_Tea_Break.webp"],
     version: "2.6",
-    events: [],
+    events: [
+      // INVITATION EVENTS
+      {
+        id: "sunna_inv_01",
+        type: "Invites",
+        title: "Diagnosed with Delusion",
+        location: "Sixth Street",
+        choices: [
+          {
+            text: "(Choices don't matter)",
+            isOptimal: true,
+          },
+        ],
+      },
+      {
+        id: "sunna_inv_02",
+        type: "Invites",
+        title: "How to Heal Your Digital Pet",
+        location: "Failume Heights",
+        choices: [{ text: "(Choices don't matter)", isOptimal: true }],
+      },
+      {
+        id: "sunna_inv_03",
+        type: "Invites",
+        title: "Superfan Representative",
+        location: "Fantasy Resort",
+        choices: [{ text: "(Choices don't matter)", isOptimal: true }],
+      },
+      {
+        id: "sunna_inv_04",
+        type: "Invites",
+        title: "Rock! Paper! Boo!",
+        location: "Blazewood",
+        choices: [{ text: "(Choices don't matter)", isOptimal: true }],
+      },
+      // WISH EVENTS
+      {
+        id: "sunna_wish_01",
+        type: "Wish",
+        title: "Dreams & Delusions",
+        location: "Reverb Arena",
+      },
+      {
+        id: "sunna_wish_02",
+        type: "Wish",
+        title: "Rising Star",
+        location: "Sixth Street - Bardic Needle",
+      },
+      {
+        id: "sunna_wish_03",
+        type: "Wish",
+        title: "Solo Practice",
+        location: "Sixth Street - Corner",
+      },
+      {
+        id: "sunna_wish_04",
+        type: "Wish",
+        title: "The Voice of All Things",
+        location: "Failume Heights - Sailume Bay",
+      },
+      {
+        id: "sunna_wish_05",
+        type: "Wish",
+        title: "Two Sides of the Stage",
+        location: "Sixth Street - 404 Error",
+      },
+      // FUN EVENTS
+      {
+        id: "sunna_fun_01",
+        type: "Fun",
+        title: "Dew Gardening Shop",
+        location: "Lumina Square",
+      },
+      {
+        id: "sunna_fun_02",
+        type: "Fun",
+        title: "Hotpot Restaurant",
+        location: "Lumina Square",
+      },
+      {
+        id: "sunna_fun_03",
+        type: "Fun",
+        title: "Playground",
+        location: "Lumina Square",
+      },
+      {
+        id: "sunna_fun_04",
+        type: "Fun",
+        title: "Gravity Cinema - Right Poster",
+        location: "Lumina Square",
+      },
+      {
+        id: "sunna_fun_05",
+        type: "Fun",
+        title: "Waterfall Soup",
+        location: "Lumina Square",
+      },
+      {
+        id: "sunna_fun_06",
+        type: "Fun",
+        title: "Drinks",
+        location: "Reverb Arena",
+      },
+      {
+        id: "sunna_fun_07",
+        type: "Fun",
+        title: "404 Error Entrance",
+        location: "Sixth Street",
+      },
+      {
+        id: "sunna_fun_08",
+        type: "Fun",
+        title: "404 Error Stage",
+        location: "Sixth Street",
+      },
+      {
+        id: "sunna_fun_09",
+        type: "Fun",
+        title: "Bangboo Statue near Box Galaxy",
+        location: "Sixth Street",
+      },
+      {
+        id: "sunna_fun_10",
+        type: "Fun",
+        title: "Mr. Panda at Coff Cafe",
+        location: "Sixth Street",
+      },
+      // RANDOM ENCOUNTERS
+      {
+        id: "sunna_rnd_01",
+        type: "Random",
+        title: "Coff Cafe",
+        location: "Lumina Square (Afternoon)",
+        choices: [
+          {
+            text: "(Choices don't matter)",
+            isOptimal: true,
+          },
+        ],
+      },
+      {
+        id: "sunna_rnd_02",
+        type: "Random",
+        title: "JC Pharmacy",
+        location: "Lumina Square (Morning - Afternoon)",
+        choices: [
+          {
+            text: "(Choices don't matter)",
+            isOptimal: true,
+          },
+        ],
+      },
+      {
+        id: "sunna_rnd_03",
+        type: "Random",
+        title: "Public Security Office - Inside",
+        location: "Lumina Square (Morning - Afternoon)",
+        choices: [
+          {
+            text: "(Choices don't matter)",
+            isOptimal: true,
+          },
+        ],
+      },
+      {
+        id: "sunna_rnd_04",
+        type: "Random",
+        title: "Yum Cha Sin",
+        location: "Failume Heights (Morning - Afternoon)",
+        choices: [
+          {
+            text: "(Choices don't matter)",
+            isOptimal: true,
+          },
+        ],
+      },
+      {
+        id: "sunna_rnd_05",
+        type: "Random",
+        title: "404 Error",
+        location: "Sixth Street (Morning - Afternoon)",
+        choices: [
+          {
+            text: "(Choices don't matter)",
+            isOptimal: true,
+          },
+        ],
+      },
+      {
+        id: "sunna_rnd_06",
+        type: "Random",
+        title: "Coff Cafe",
+        location: "Sixth Street (Morning - Afternoon)",
+        choices: [
+          {
+            text: "(Choices don't matter)",
+            isOptimal: true,
+          },
+        ],
+      },
+    ],
   },
   {
     id: "trigger",
