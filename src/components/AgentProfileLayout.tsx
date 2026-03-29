@@ -30,19 +30,41 @@ export default function AgentProfileLayout({ agent }: { agent: Agent }) {
   };
 
   // filter events
-  const filteredEvents = agent.events.filter(
-    (event) => event.type === activeTab,
-  );
-
-  // filter faction
-  const { showFactionOnly, toggleFactionFilter } = useProgressStore();
-  const quickRoster = showFactionOnly
-    ? agentsData.filter((a) => a.faction === agent.faction)
-    : agentsData;
+  const {
+    showFactionOnly,
+    toggleFactionFilter,
+    completedEvents,
+    favoriteEvents,
+  } = useProgressStore();
 
   // auto scroll to selected agent in quick router
   const trayRef = useRef<HTMLDivElement>(null);
   const activeAgentRef = useRef<HTMLDivElement>(null);
+
+  const filteredEvents = agent.events.filter(
+    (event) => event.type === activeTab,
+  );
+
+  // sort the events based on priority order!
+  const sortedEvents = [...filteredEvents].sort((a, b) => {
+    const aCompleted = completedEvents.includes(a.id);
+    const bCompleted = completedEvents.includes(b.id);
+    const aFavorite = favoriteEvents.includes(a.id);
+    const bFavorite = favoriteEvents.includes(b.id);
+
+    // priority order
+    const getScore = (isCompleted: boolean, isFavorite: boolean) => {
+      if (isCompleted) return 3; // marked check - last
+      if (isFavorite) return 2; // faves - second
+      return 1; // unmarked - top
+    };
+
+    return getScore(aCompleted, aFavorite) - getScore(bCompleted, bFavorite);
+  });
+
+  const quickRoster = showFactionOnly
+    ? agentsData.filter((a) => a.faction === agent.faction)
+    : agentsData;
 
   // always scroll to top when page loads
   useEffect(() => {
@@ -100,7 +122,7 @@ export default function AgentProfileLayout({ agent }: { agent: Agent }) {
       {/* main content */}
       <div className="flex flex-col md:flex-row md:gap-4">
         {/* left side - agent content */}
-        <div className="md:w-75 bg-surface-grad shadow-surface rounded-lg p-4 flex md:flex-col gap-4 mb-4">
+        <div className="md:w-75 bg-surface-grad shadow-surface rounded-lg p-4 flex md:flex-col gap-4 mb-4 md:mb-0">
           <div
             className="group w-25 h-25 sm:w-50 sm:h-50 flex items-center justify-center relative self-center md:mb-4"
             onClick={handleOutfitSwap}
@@ -177,7 +199,7 @@ export default function AgentProfileLayout({ agent }: { agent: Agent }) {
             <p className="text-md text-foreground leading-none">
               {displayName}
             </p>
-            <p className="text-xs text-foreground/50 mt-1">{agent.faction}</p>
+            <p className="text-xs text-foreground/75 mt-1">{agent.faction}</p>
             <div className="mt-2 flex items-center gap-2 rounded-full bg-background p-1 justify-around shadow-[inset_0_10px_20px_rgba(0,0,0,0.6)] border-2 border-border-soft">
               <img
                 src={`/rarity/${agent.rarity}.webp`}
@@ -197,6 +219,34 @@ export default function AgentProfileLayout({ agent }: { agent: Agent }) {
                 title={agent.specialty}
                 className="w-5 h-5 inline"
               />
+            </div>
+            <div className="mt-2 flex flex-col gap-2">
+              <div className="flex justify-between items-start gap-x-3">
+                <span className="text-[10px] text-foreground/75 uppercase tracking-widest shrink-0 mt-0.5">
+                  Birthday
+                </span>
+                <span className="flex-1 text-xs text-foreground tracking-wider text-right wrap-break-word min-w-0">
+                  {agent.birthDate}
+                </span>
+              </div>
+
+              <div className="flex justify-between items-start gap-x-3">
+                <span className="text-[10px] text-foreground/75 uppercase tracking-widest shrink-0 mt-0.5">
+                  Species
+                </span>
+                <span className="flex-1 text-xs text-foreground tracking-wider text-right wrap-break-word min-w-0">
+                  {agent.species}
+                </span>
+              </div>
+
+              {/* <div className="flex justify-between items-start gap-x-3">
+                <span className="text-[10px] text-foreground/75 uppercase tracking-widest shrink-0 mt-0.5">
+                  Faction
+                </span>
+                <span className="text-xs text-foreground tracking-wider text-right">
+                  {agent.faction}
+                </span>
+              </div> */}
             </div>
           </div>
         </div>
@@ -229,14 +279,16 @@ export default function AgentProfileLayout({ agent }: { agent: Agent }) {
         </div>
 
         {/* right side - event content */}
-        <div className="bg-background p-3 w-full rounded-lg shadow-[inset_0_10px_20px_rgba(0,0,0,0.6)] border-2 border-border-soft">
-          <div className="space-y-4">
-            {filteredEvents.length > 0 ? (
-              filteredEvents.map((event) => (
-                <EventCard key={event.id} event={event} />
-              ))
+        <div className="bg-background w-full rounded-lg shadow-[inset_0_10px_20px_rgba(0,0,0,0.6)] border-2 border-border-soft h-112.5 lg:h-125 xl:h-137.5 relative overflow-hidden flex flex-col">
+          <div className="flex-1 overflow-y-auto p-4 sm:p-6">
+            {sortedEvents.length > 0 ? (
+              <div className="space-y-4 pb-8">
+                {sortedEvents.map((event) => (
+                  <EventCard key={event.id} event={event} />
+                ))}
+              </div>
             ) : (
-              <div className="w-full h-75 flex items-center justify-center">
+              <div className="w-full h-full flex items-center justify-center min-h-75">
                 <div className="text-foreground/50 italic text-xl sm:text-2xl text-center p-8 shadow-inner max-w-md uppercase">
                   No {activeTab} trust events documented yet.
                 </div>

@@ -1,14 +1,32 @@
 "use client";
-import { Check, Star } from "lucide-react";
-import { TrustEvent } from "../data/agents";
+import { Check, Star, CornerDownRight } from "lucide-react";
+import { TrustEvent, TrustResult } from "../data/agents";
 import { useProgressStore } from "../store/useProgressStore";
-import {
-  ReactElement,
-  JSXElementConstructor,
-  ReactNode,
-  ReactPortal,
-  Key,
-} from "react";
+
+const getResultUI = (result: TrustResult) => {
+  switch (result) {
+    case "Significant":
+      return {
+        color: "text-[#ff9d00]",
+        icon: "/eventIcons/significant.webp",
+      };
+    case "Normal":
+      return {
+        color: "text-[#4ade80]",
+        icon: "/eventIcons/normal.webp",
+      };
+    case "Decrease":
+      return {
+        color: "text-[#3b82f6]",
+        icon: "/eventIcons/decrease.webp",
+      };
+    default:
+      return {
+        color: "text-foreground/50",
+        icon: "",
+      };
+  }
+};
 
 export default function EventCard({ event }: { event: TrustEvent }) {
   const { completedEvents, favoriteEvents, toggleCompleted, toggleFavorite } =
@@ -64,46 +82,70 @@ export default function EventCard({ event }: { event: TrustEvent }) {
         </div>
       </div>
 
+      {/* location image */}
+      {event.image && (
+        <div className="mb-4 w-full aspect-video rounded-lg overflow-hidden relative">
+          <img
+            src={event.image}
+            alt={`Location for ${event.title}`}
+            className={`w-full h-full object-cover transition-opacity duration-300 ${isCompleted ? "opacity-50" : "opacity-100"}`}
+          />
+        </div>
+      )}
+
       {/* answers */}
-      <div className="space-y-2">
-        {event.choices?.map(
-          (
-            choice: {
-              isOptimal: any;
-              text:
-                | string
-                | number
-                | bigint
-                | boolean
-                | ReactElement<unknown, string | JSXElementConstructor<any>>
-                | Iterable<ReactNode>
-                | ReactPortal
-                | Promise<
-                    | string
-                    | number
-                    | bigint
-                    | boolean
-                    | ReactPortal
-                    | ReactElement<unknown, string | JSXElementConstructor<any>>
-                    | Iterable<ReactNode>
-                    | null
-                    | undefined
-                  >
-                | null
-                | undefined;
-            },
-            index: Key | null | undefined,
-          ) => (
-            <div key={index} className="flex items-center gap-2">
-              <span
-                className={`text-xs ${choice.isOptimal ? "text-[#beff01]" : "text-red-500"}`}
+      <div className="mt-auto pt-3">
+        <div className="space-y-2">
+          {event.choices?.map((choice, index) => {
+            const ui = getResultUI(choice.result);
+
+            // check if answers within an array
+            const steps = Array.isArray(choice.text)
+              ? choice.text
+              : [choice.text];
+
+            return (
+              <div
+                key={index}
+                className="flex items-start gap-3 bg-background p-3 rounded-lg border-2 border-border-soft"
               >
-                {choice.isOptimal ? "+" : "-"}
-              </span>
-              <span className="text-foreground text-xs">{choice.text}</span>
-            </div>
-          ),
-        )}
+                <img
+                  src={ui.icon}
+                  alt={choice.result}
+                  title={choice.result}
+                  className="w-6 h-6 shrink-0 mt-0.5"
+                />
+
+                <div className="flex flex-col gap-2 flex-1 pt-0.5">
+                  {steps.map((step, stepIndex) => (
+                    <div
+                      key={stepIndex}
+                      className={`flex items-start ${stepIndex > 0 ? "ml-2 sm:ml-5" : ""}`}
+                    >
+                      {stepIndex > 0 && (
+                        <CornerDownRight
+                          size={16}
+                          className="text-foreground/50 shrink-0 mr-2 mt-0.5"
+                        />
+                      )}
+
+                      {/* dialogue text */}
+                      <span
+                        className={`text-sm ${
+                          choice.result === "Decrease"
+                            ? "text-foreground/50"
+                            : ui.color
+                        }`}
+                      >
+                        "{step}"
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            );
+          })}
+        </div>
       </div>
     </div>
   );

@@ -25,10 +25,40 @@ export default function ChangelogPage() {
 
             <div className="bg-surface border-2 border-border-soft rounded-lg p-6 shadow-surface relative -top-5">
               <div className="flex flex-col sm:flex-row sm:items-end gap-2 sm:gap-4 mb-4 border-b border-border-soft pb-4">
-                <h2 className="text-lg text-foreground">March 18, 2026</h2>
+                <h2 className="text-lg text-foreground">March 29, 2026</h2>
               </div>
 
               <ul className="space-y-3 text-foreground/75 text-sm">
+                <li className="flex gap-3">
+                  <span className="text-item-active italic">NEW</span>
+                  Added Nangong Yu, Ye Shunguang, & Zhao.
+                </li>
+                <li className="flex gap-3">
+                  <span className="text-item-active italic">NEW</span>
+                  Added Agent's Birthday.
+                </li>
+                <li className="flex gap-3">
+                  <span className="text-item-active italic">NEW</span>
+                  Added Agent's Species.
+                </li>
+                <li className="flex gap-3">
+                  <span className="text-item-active italic">UPDATE</span>
+                  Added new Emoji Icons from the game in Event choices.
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          {/* card-8 */}
+          <div className="relative border-l-[3px] border-surface/50 pl-8 sm:pl-10 pb-4">
+            <div className="absolute w-5 h-5 bg-surface border-4 border-border-soft rounded-full -left-2.75 top-0"></div>
+
+            <div className="bg-background border-2 border-border-soft rounded-lg p-6 shadow-surface relative -top-5 opacity-80 hover:opacity-100 transition-opacity">
+              <div className="flex flex-col sm:flex-row sm:items-end gap-2 sm:gap-4 mb-4 border-b border-border-soft pb-4">
+                <h2 className="text-lg text-foreground">March 18, 2026</h2>
+              </div>
+
+              <ul className="space-y-3 text-foreground/50 text-sm">
                 <li className="flex gap-3">
                   <span className="text-item-active italic">NEW</span>
                   Added left and right navigation buttons for quick agent
