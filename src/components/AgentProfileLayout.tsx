@@ -279,7 +279,7 @@ export default function AgentProfileLayout({ agent }: { agent: Agent }) {
         </div>
 
         {/* right side - event content */}
-        <div className="bg-background w-full rounded-lg shadow-[inset_0_10px_20px_rgba(0,0,0,0.6)] border-2 border-border-soft h-112.5 lg:h-125 xl:h-137.5 relative overflow-hidden flex flex-col">
+        <div className="bg-background w-full rounded-lg shadow-[inset_0_10px_20px_rgba(0,0,0,0.6)] border-2 border-border-soft h-112.5 lg:h-120 relative overflow-hidden flex flex-col">
           <div className="flex-1 overflow-y-auto p-4 sm:p-6">
             {sortedEvents.length > 0 ? (
               <div className="space-y-4 pb-8">
