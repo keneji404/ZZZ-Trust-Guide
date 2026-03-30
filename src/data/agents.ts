@@ -28,6 +28,7 @@ export type Agent = {
   color: string;
   images: string[];
   version: string;
+  isNew?: boolean;
   events: TrustEvent[];
 };
 
@@ -365,20 +366,21 @@ export const agentsData: Agent[] = [
   //   version: "1.2",
   //   events: [],
   // },
-  {
-    id: "cissia",
-    name: "Cissia",
-    rarity: "S",
-    attribute: "Electric",
-    specialty: "Attack",
-    birthDate: "??",
-    species: "Thiren",
-    faction: "Metropolitan Order Division",
-    color: "#ff93a7",
-    images: ["/agent/Cissia.webp"],
-    version: "2.7",
-    events: [],
-  },
+  // {
+  //   id: "cissia",
+  //   name: "Cissia",
+  //   rarity: "S",
+  //   attribute: "Electric",
+  //   specialty: "Attack",
+  //   birthDate: "??",
+  //   species: "Thiren",
+  //   faction: "Metropolitan Order Division",
+  //   color: "#c4a87f",
+  //   images: ["/agent/Cissia.webp"],
+  //   version: "2.7",
+  //   isNew: true,
+  //   events: [],
+  // },
   // {
   //   id: "corin",
   //   name: "Corin",
@@ -392,18 +394,239 @@ export const agentsData: Agent[] = [
   //   version: "1.0",
   //   events: [],
   // },
-  // {
-  //   id: "dialyn",
-  //   name: "Dialyn",
-  //   attribute: "Physical",
-  //   specialty: "Stun",
-  //   faction: "Krampus Compliance Authority",
-  //   rarity: "S",
-  //   color: "#7770fd",
-  //   images: ["/agent/Dialyn.webp"],
-  //   version: "2.4",
-  //   events: [],
-  // },
+  {
+    id: "dialyn",
+    name: "Dialyn",
+    rarity: "S",
+    attribute: "Physical",
+    specialty: "Stun",
+    birthDate: "May 28",
+    species: "Human",
+    faction: "Krampus Compliance Authority",
+    color: "#7770fd",
+    images: ["/agent/Dialyn.webp"],
+    version: "2.4",
+    events: [
+      // INVITATION EVENTS
+      {
+        id: "dialyn_inv_01",
+        type: "Invites",
+        title: "Even if the Ocean Never Answered",
+        location: "Fantasy Resort",
+        choices: [
+          {
+            text: "Let me be your echo.",
+            result: "Significant",
+          },
+          {
+            text: "Let's run away together.",
+            result: "Decrease",
+          },
+        ],
+      },
+      {
+        id: "dialyn_inv_02",
+        type: "Invites",
+        title: "The Perfect Fluff",
+        location: "Failume Heights",
+        choices: [{ text: "(Choices don't matter)", result: "Normal" }],
+      },
+      {
+        id: "dialyn_inv_03",
+        type: "Invites",
+        title: "Watch Out for Seagulls",
+        location: "Port Elpis",
+        choices: [
+          {
+            text: "Thanks to the ever-thoughtful customer service rep.",
+            result: "Significant",
+          },
+          {
+            text: "Thanks to the merciful Judge.",
+            result: "Decrease",
+          },
+        ],
+      },
+      {
+        id: "dialyn_inv_04",
+        type: "Invites",
+        title: "Wonderland and the Thief's Invitation",
+        location: "Lumina Square",
+        choices: [{ text: "(Choices don't matter)", result: "Normal" }],
+      },
+      // WISH EVENTS
+      {
+        id: "dialyn_wish_01",
+        type: "Wish",
+        title: "50% Sugary Memories",
+        location: "Failume Heights - Balabala Tong Sui",
+      },
+      {
+        id: "dialyn_wish_02",
+        type: "Wish",
+        title: "Expired Human",
+        location: "Failume Heights - Cable Car",
+      },
+      {
+        id: "dialyn_wish_03",
+        type: "Wish",
+        title: "In the Display Window",
+        location: "Failume Heights - Overpass",
+      },
+      {
+        id: "dialyn_wish_04",
+        type: "Wish",
+        title: "Boss's Appointed Hire",
+        location: "Sixth Street - Metro Entrance",
+      },
+      {
+        id: "dialyn_wish_05",
+        type: "Wish",
+        title: "Fluffy Temptation",
+        location: "Failume Heights - Overpass Entrance",
+      },
+      // FUN EVENTS
+      {
+        id: "dialyn_fun_01",
+        type: "Fun",
+        title: "Dew Gardening Shop",
+        location: "Lumina Square",
+      },
+      {
+        id: "dialyn_fun_02",
+        type: "Fun",
+        title: "Physiotherapy studio",
+        location: "Lumina Square",
+      },
+      {
+        id: "dialyn_fun_03",
+        type: "Fun",
+        title: "Coff Cafe",
+        location: "Lumina Square",
+      },
+      {
+        id: "dialyn_fun_04",
+        type: "Fun",
+        title: "N.E.P.S. - Gate",
+        location: "Lumina Square",
+      },
+      {
+        id: "dialyn_fun_05",
+        type: "Fun",
+        title: "Lumina Square Station",
+        location: "Lumina Square",
+      },
+      {
+        id: "dialyn_fun_06",
+        type: "Fun",
+        title: "Yum Cha Sin",
+        location: "Failume Heights",
+      },
+      {
+        id: "dialyn_fun_07",
+        type: "Fun",
+        title: "Box Galaxy",
+        location: "Sixth Street",
+      },
+      {
+        id: "dialyn_fun_08",
+        type: "Fun",
+        title: "Payphone",
+        location: "Sixth Street",
+      },
+      {
+        id: "dialyn_fun_09",
+        type: "Fun",
+        title: "Newsstand",
+        location: "Sixth Street",
+      },
+      // RANDOM ENCOUNTERS
+      {
+        id: "dialyn_rnd_01",
+        type: "Random",
+        title: "Peace Herbal",
+        location: "Failume Heights (Morning - Afternoon - Evening)",
+        choices: [
+          {
+            text: "You worried about something?",
+            result: "Significant",
+          },
+          {
+            text: "Being a customer service rep must be really stressful, huh?",
+            result: "Decrease",
+          },
+        ],
+      },
+      {
+        id: "dialyn_rnd_02",
+        type: "Random",
+        title: "Seagaze Road",
+        location: "Failume Heights (Morning - Afternoon - Evening)",
+        choices: [
+          {
+            text: "But Blick meant well, you know.",
+            result: "Normal",
+          },
+          {
+            text: "I want to record Dialyn in combat too.",
+            result: "Significant",
+          },
+        ],
+      },
+      {
+        id: "dialyn_rnd_03",
+        type: "Random",
+        title: "Yum Cha Sin",
+        location: "Failume Heights (Morning - Afternoon - Evening)",
+        choices: [
+          {
+            text: "(Choices don't matter)",
+            result: "Normal",
+          },
+        ],
+      },
+      {
+        id: "dialyn_rnd_04",
+        type: "Random",
+        title: "Music Festival Satge",
+        location: "Fantasy Resort (Late Night)",
+        choices: [
+          {
+            text: "(Choices don't matter)",
+            result: "Normal",
+          },
+        ],
+      },
+      {
+        id: "dialyn_rnd_05",
+        type: "Random",
+        title: "Branch Street",
+        location: "Sixth Street (Morning - Afternoon - Evening)",
+        choices: [
+          {
+            text: "(Choices don't matter)",
+            result: "Normal",
+          },
+        ],
+      },
+      {
+        id: "dialyn_rnd_06",
+        type: "Random",
+        title: "Newsstand",
+        location: "Sixth Street (Morning - Afternoon - Evening)",
+        choices: [
+          {
+            text: "Not going with your customer service persona today?",
+            result: "Significant",
+          },
+          {
+            text: "Important Judge business?",
+            result: "Normal",
+          },
+        ],
+      },
+    ],
+  },
   // {
   //   id: "ellen",
   //   name: "Ellen",
@@ -603,6 +826,7 @@ export const agentsData: Agent[] = [
       "/outfit/Nangong_Yu_Rhapsody's_Muse.webp",
     ],
     version: "2.7",
+    isNew: true,
     events: [
       // INVITATION EVENTS
       {

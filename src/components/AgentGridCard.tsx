@@ -21,6 +21,13 @@ export default function AgentGridCard({ agent }: { agent: Agent }) {
           <div
             className={`relative w-full aspect-square rounded-2xl ${baseColor} bg-dotted-pattern overflow-hidden`}
           >
+            {agent.isNew && (
+              <div className="absolute top-2 left-2 z-40">
+                <span className="text-[#ffff00] italic text-md shadow-md">
+                  NEW!
+                </span>
+              </div>
+            )}
             <div className="absolute -inset-full bg-background bg-dotted-pattern -rotate-45 origin-center -translate-y-[25%] -translate-x-[45%] flex flex-col justify-end pointer-events-none z-0">
               <div
                 className="hidden sm:flex w-max text-surface/30 italic text-6xl sm:text-7xl tracking-widest uppercase animate-marquee-reverse [animation-play-state:paused] group-hover:[animation-play-state:running]"
@@ -46,7 +53,7 @@ export default function AgentGridCard({ agent }: { agent: Agent }) {
           </div>
 
           <div className="mt-1 text-center">
-            <h2 className="text-md">{agent.name}</h2>
+            <h2 className="text-sm">{agent.name}</h2>
             {/* <div className="flex justify-center items-center gap-2 mt-1">
           <span className={`px-2 py-0.5 text-[10px] font-bold rounded bg-[#1a1a1a] ${isSRank ? 'text-[#ff8c00]' : 'text-[#b058ff]'}`}>
             {agent.rarity}-RANK

@@ -40,11 +40,10 @@ export default function FilterableGrid({
 
   // filter logic
   const filteredAgents = useMemo(() => {
-    return agentsData.filter((agent) => {
+    const filtered = agentsData.filter((agent) => {
       const searchTerm = search.toLowerCase();
       const matchesSearch =
         agent.name.toLowerCase().includes(searchTerm) ||
-        agent.fullName?.toLowerCase().includes(searchTerm) ||
         agent.faction.toLowerCase().includes(searchTerm);
 
       const matchesRarity =
@@ -60,6 +59,13 @@ export default function FilterableGrid({
       return (
         matchesSearch && matchesRarity && matchesAttribute && matchesSpecialty
       );
+    });
+
+    // pin new agents at the top of the list.
+    return filtered.sort((a, b) => {
+      if (a.isNew && !b.isNew) return -1;
+      if (!a.isNew && b.isNew) return 1;
+      return 0;
     });
   }, [
     agentsData,

@@ -25,13 +25,13 @@ export default function ChangelogPage() {
 
             <div className="bg-surface border-2 border-border-soft rounded-lg p-6 shadow-surface relative -top-5">
               <div className="flex flex-col sm:flex-row sm:items-end gap-2 sm:gap-4 mb-4 border-b border-border-soft pb-4">
-                <h2 className="text-lg text-foreground">March 29, 2026</h2>
+                <h2 className="text-lg text-foreground">March 30, 2026</h2>
               </div>
 
               <ul className="space-y-3 text-foreground/75 text-sm">
                 <li className="flex gap-3">
                   <span className="text-item-active italic">NEW</span>
-                  Added Nangong Yu, Ye Shunguang, & Zhao.
+                  Added Nangong Yu, Ye Shunguang, Zhao, Dialyn.
                 </li>
                 <li className="flex gap-3">
                   <span className="text-item-active italic">NEW</span>
@@ -44,6 +44,10 @@ export default function ChangelogPage() {
                 <li className="flex gap-3">
                   <span className="text-item-active italic">UPDATE</span>
                   Added new Emoji Icons from the game in Event choices.
+                </li>
+                <li className="flex gap-3">
+                  <span className="text-item-active italic">UPDATE</span>
+                  Added a "NEW" tag that pins newly added agents at the top.
                 </li>
               </ul>
             </div>
