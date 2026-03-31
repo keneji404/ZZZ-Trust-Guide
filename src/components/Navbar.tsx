@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ArrowLeft, Terminal } from "lucide-react";
+import { ArrowLeft, Github } from "lucide-react";
 import DataManager from "./DataManager";
 import ThemeSwitcher from "./ThemeSwitcher";
 
@@ -27,11 +27,13 @@ export default function Navbar() {
       </div>
       <div className="flex items-center shrink-0 ml-4 gap-2">
         <Link
-          href="/changelog"
-          title="Update Log"
+          href="https://github.com/keneji404/ZZZ-Trust-Guide"
+          title="View on Github"
           className="text-foreground hover:text-item-hover"
+          target="_blank"
+          rel="noopener noreferrer"
         >
-          <Terminal size={20} strokeWidth={3} />
+          <Github size={20} strokeWidth={3} />
         </Link>
 
         <ThemeSwitcher />
