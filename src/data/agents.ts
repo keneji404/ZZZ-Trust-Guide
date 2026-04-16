@@ -366,21 +366,21 @@ export const agentsData: Agent[] = [
   //   version: "1.2",
   //   events: [],
   // },
-  // {
-  //   id: "cissia",
-  //   name: "Cissia",
-  //   rarity: "S",
-  //   attribute: "Electric",
-  //   specialty: "Attack",
-  //   birthDate: "??",
-  //   species: "Thiren",
-  //   faction: "Metropolitan Order Division",
-  //   color: "#c4a87f",
-  //   images: ["/agent/Cissia.webp"],
-  //   version: "2.7",
-  //   isNew: true,
-  //   events: [],
-  // },
+  {
+    id: "cissia",
+    name: "Cissia",
+    rarity: "S",
+    attribute: "Electric",
+    specialty: "Attack",
+    birthDate: "??",
+    species: "Thiren",
+    faction: "Metropolitan Order Division",
+    color: "#c4a87f",
+    images: ["/agent/Cissia.webp"],
+    version: "2.7",
+    isNew: true,
+    events: [],
+  },
   // {
   //   id: "corin",
   //   name: "Corin",
@@ -832,6 +832,18 @@ export const agentsData: Agent[] = [
       {
         id: "nangong_yu_inv_01",
         type: "Invites",
+        title: "Angel Off Stage",
+        location: "Sixth Street - 404 Livehouse",
+        choices: [
+          {
+            text: "(Choices don't matter)",
+            result: "Significant",
+          },
+        ],
+      },
+      {
+        id: "nangong_yu_inv_02",
+        type: "Invites",
         title: "Business Mogul Nangong Yu",
         location: "Lumina Square",
         choices: [
@@ -841,8 +853,61 @@ export const agentsData: Agent[] = [
           },
         ],
       },
+      {
+        id: "nangong_yu_inv_03",
+        type: "Invites",
+        title: "Feathers and the Sun Fall Together",
+        location: "Fantasy Resort",
+        choices: [
+          {
+            text: "(Choices don't matter)",
+            result: "Significant",
+          },
+        ],
+      },
+      {
+        id: "nangong_yu_inv_04",
+        type: "Invites",
+        title: "Sea God and the Angel",
+        location: "Fantasy Resort",
+        choices: [
+          {
+            text: "(Choices don't matter)",
+            result: "Significant",
+          },
+        ],
+      },
       // WISH EVENTS
-
+      {
+        id: "nangong_yu_wish_01",
+        type: "Wish",
+        title: "Where Delusions Began",
+        location: "Sixth Steet - 404 Livehouse",
+      },
+      {
+        id: "nangong_yu_wish_02",
+        type: "Wish",
+        title: "Healthy Tea",
+        location: "Failume Heights - Peace Herbal",
+      },
+      {
+        id: "nangong_yu_wish_03",
+        type: "Wish",
+        title: "The Most Dazzling Stage",
+        location: "Starloop Tower - Lounge",
+      },
+      {
+        id: "nangong_yu_wish_04",
+        type: "Wish",
+        title: "Flight of the Angels",
+        location: "Reverb Arena",
+      },
+      {
+        id: "nangong_yu_wish_05",
+        type: "Wish",
+        title: "Echoes of the Sea",
+        location: "Port Elpis - Dock",
+      },
       // FUN EVENTS
       {
         id: "nangong_yu_fun_01",
@@ -926,7 +991,7 @@ export const agentsData: Agent[] = [
       {
         id: "nangong_yu_rnd_03",
         type: "Random",
-        title: "Bardic Needle",
+        title: "404 Livehouse",
         location: "Sixth Street (Morning - Afternoon)",
         choices: [
           {
@@ -938,7 +1003,31 @@ export const agentsData: Agent[] = [
       {
         id: "nangong_yu_rnd_04",
         type: "Random",
+        title: "Bardic Needle",
+        location: "Sixth Street (Morning - Afternoon)",
+        choices: [
+          {
+            text: "(Choices don't matter)",
+            result: "Normal",
+          },
+        ],
+      },
+      {
+        id: "nangong_yu_rnd_05",
+        type: "Random",
         title: "Coff Cafe",
+        location: "Sixth Street (Morning - Afternoon)",
+        choices: [
+          {
+            text: "(Choices don't matter)",
+            result: "Normal",
+          },
+        ],
+      },
+      {
+        id: "nangong_yu_rnd_06",
+        type: "Random",
+        title: "Waterfall Soup",
         location: "Sixth Street (Morning - Afternoon)",
         choices: [
           {

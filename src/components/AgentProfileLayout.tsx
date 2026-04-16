@@ -196,7 +196,7 @@ export default function AgentProfileLayout({ agent }: { agent: Agent }) {
 
           {/* agent info */}
           <div className="px-2 pb-2 overflow-hidden">
-            <p className="text-md text-foreground leading-none">
+            <p className="text-md text-foreground leading-none text-shadow-[0_0_1px_black]">
               {displayName}
             </p>
             <p className="text-xs text-foreground/75 mt-1">{agent.faction}</p>
@@ -225,7 +225,7 @@ export default function AgentProfileLayout({ agent }: { agent: Agent }) {
                 <span className="text-[10px] text-foreground/75 uppercase tracking-widest shrink-0 mt-0.5">
                   Birthday
                 </span>
-                <span className="flex-1 text-xs text-foreground tracking-wider text-right wrap-break-word min-w-0">
+                <span className="flex-1 text-xs text-foreground tracking-wider text-right wrap-break-word min-w-0 text-shadow-[0_0_1px_black]">
                   {agent.birthDate}
                 </span>
               </div>
@@ -234,7 +234,7 @@ export default function AgentProfileLayout({ agent }: { agent: Agent }) {
                 <span className="text-[10px] text-foreground/75 uppercase tracking-widest shrink-0 mt-0.5">
                   Species
                 </span>
-                <span className="flex-1 text-xs text-foreground tracking-wider text-right wrap-break-word min-w-0">
+                <span className="flex-1 text-xs text-foreground tracking-wider text-right wrap-break-word min-w-0 text-shadow-[0_0_1px_black]">
                   {agent.species}
                 </span>
               </div>
@@ -266,7 +266,7 @@ export default function AgentProfileLayout({ agent }: { agent: Agent }) {
                   ${
                     isActive
                       ? "h-10 sm:h-12 bg-tab-active text-background"
-                      : "h-8 sm:h-10 bg-surface-grad hover:bg-item-hover-grad"
+                      : "h-8 sm:h-10 bg-surface-grad hover:bg-item-hover-grad text-shadow-[0_0_1px_black]"
                   }
                 `}
               >

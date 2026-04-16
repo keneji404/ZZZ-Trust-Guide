@@ -23,7 +23,7 @@ export default function AgentGridCard({ agent }: { agent: Agent }) {
           >
             {agent.isNew && (
               <div className="absolute top-2 left-2 z-40">
-                <span className="text-[#ffff00] italic text-md shadow-md">
+                <span className="text-[#ffff00] italic text-md text-shadow-[0_0_1px_black]">
                   NEW!
                 </span>
               </div>

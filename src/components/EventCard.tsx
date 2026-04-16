@@ -39,10 +39,12 @@ export default function EventCard({ event }: { event: TrustEvent }) {
     <div
       className={`p-4 rounded-lg border-2 transition-all ${isCompleted ? "border-item-active bg-background opacity-25" : "border-border-soft/50 bg-surface shadow-surface"}`}
     >
-      <div className="flex justify-between items-start mb-4">
+      <div className="flex justify-between items-start">
         <div>
-          <h3 className="text-md text-foreground">{event.title}</h3>
-          <p className="text-xs text-foreground/50">{event.location}</p>
+          <h3 className="text-md text-foreground text-shadow-[0_0_1px_black]">
+            {event.title}
+          </h3>
+          <p className="text-xs text-foreground/75">{event.location}</p>
         </div>
 
         {/* buttons */}
@@ -94,7 +96,7 @@ export default function EventCard({ event }: { event: TrustEvent }) {
       )}
 
       {/* answers */}
-      <div className="mt-auto pt-3">
+      <div className="mt-auto pt-4">
         <div className="space-y-2">
           {event.choices?.map((choice, index) => {
             const ui = getResultUI(choice.result);
