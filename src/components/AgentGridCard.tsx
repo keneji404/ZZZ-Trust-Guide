@@ -21,13 +21,22 @@ export default function AgentGridCard({ agent }: { agent: Agent }) {
           <div
             className={`relative w-full aspect-square rounded-2xl ${baseColor} bg-dotted-pattern overflow-hidden`}
           >
-            {agent.isNew && (
-              <div className="absolute top-2 left-2 z-40">
-                <span className="text-[#ffff00] italic text-md text-shadow-[0_0_1px_black]">
+            <div className="absolute top-2 left-2 z-40 flex gap-2">
+              {agent.isNew && (
+                <span className="text-[#ffff00] italic text-md text-shadow-[0_0_2px_black]">
                   NEW!
                 </span>
-              </div>
-            )}
+              )}
+              {agent.isWip && (
+                <span
+                  className="text-[#ffff00] italic text-md text-shadow-[0_0_2px_black]"
+                  title="Work in Progress"
+                >
+                  WIP
+                </span>
+              )}
+            </div>
+
             <div className="absolute -inset-full bg-background bg-dotted-pattern -rotate-45 origin-center -translate-y-[25%] -translate-x-[45%] flex flex-col justify-end pointer-events-none z-0">
               <div
                 className="hidden sm:flex w-max text-surface/30 italic text-6xl sm:text-7xl tracking-widest uppercase animate-marquee-reverse [animation-play-state:paused] group-hover:[animation-play-state:running]"

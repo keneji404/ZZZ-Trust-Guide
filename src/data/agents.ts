@@ -29,6 +29,7 @@ export type Agent = {
   images: string[];
   version: string;
   isNew?: boolean;
+  isWip?: boolean;
   events: TrustEvent[];
 };
 
@@ -302,18 +303,122 @@ export const agentsData: Agent[] = [
   //   version: "1.5",
   //   events: [],
   // },
-  // {
-  //   id: "banyue",
-  //   name: "Banyue",
-  //   attribute: "Fire",
-  //   specialty: "Rupture",
-  //   faction: "Krampus Compliance Authority",
-  //   rarity: "S",
-  //   color: "#7770fd",
-  //   images: ["/agent/Banyue.webp"],
-  //   version: "2.4",
-  //   events: [],
-  // },
+  {
+    id: "banyue",
+    name: "Banyue",
+    rarity: "S",
+    attribute: "Fire",
+    specialty: "Rupture",
+    birthDate: "July 24",
+    species: "Intelligent Construct",
+    faction: "Krampus Compliance Authority",
+    color: "#7770fd",
+    images: ["/agent/Banyue.webp"],
+    version: "2.4",
+    isWip: true,
+    events: [
+      // INVITATION EVENTS
+      {
+        id: "banyue_inv_01",
+        type: "Invites",
+        title: "Massaging Hands",
+        location: "Lumina Square",
+        choices: [
+          {
+            text: "(Choices don't matter)",
+            result: "Normal",
+          },
+        ],
+      },
+      {
+        id: "banyue_inv_02",
+        type: "Invites",
+        title: "Boxing and Martial Arts",
+        location: "Blazewood",
+        choices: [
+          {
+            text: "Let's do this!",
+            result: "Normal",
+          },
+        ],
+      },
+      {
+        id: "banyue_inv_03",
+        type: "Invites",
+        title: "A Breezy Day by the Sea",
+        location: "Port Elpis",
+        choices: [
+          {
+            text: "I see...",
+            result: "Normal",
+          },
+        ],
+      },
+      {
+        id: "banyue_inv_04",
+        type: "Invites",
+        title: "Love It or Leave It",
+        location: "Good Goods",
+        choices: [
+          {
+            text: "Everyone's really into them right now.",
+            result: "Normal",
+          },
+        ],
+      },
+      // WISH EVENTS
+      {
+        id: "banyue_wish_01",
+        type: "Wish",
+        title: "Battery Thief",
+        location: "Lumina Square - Charging Station",
+      },
+      {
+        id: "banyue_wish_02",
+        type: "Wish",
+        title: "Now That's What I Call Skills!",
+        location: "Failume Heights - Mahjong Parlor",
+      },
+      {
+        id: "banyue_wish_03",
+        type: "Wish",
+        title: "Martial Artist",
+        location: "Port Elpis - Dock",
+      },
+      {
+        id: "banyue_wish_04",
+        type: "Wish",
+        title: "Sanctuary",
+        location: "Ballet Twins Metro Station - Entrance",
+      },
+      {
+        id: "banyue_wish_05",
+        type: "Wish",
+        title: "Learning New Vocabulary",
+        location: "Lumina Square - Capsule Hotel",
+      },
+      // FUN EVENTS
+      // {
+      //   id: "banyue_fun_01",
+      //   type: "Fun",
+      //   title: "Cheesetopia",
+      //   location: "Blazewood",
+      // },
+      // RANDOM ENCOUNTERS
+      // {
+      //   id: "banyue_rnd_01",
+      //   type: "Random",
+      //   title: "Souvenir Shop",
+      //   location: "Fantasy Resort (Morning - Afternoon)",
+      //   choices: [
+      //     {
+      //       text: "(Choices don't matter)",
+      //       result: "Normal",
+      //     },
+      //   ],
+      // },
+    ],
+  },
   // {
   //   id: "ben",
   //   name: "Ben",
@@ -372,13 +477,14 @@ export const agentsData: Agent[] = [
     rarity: "S",
     attribute: "Electric",
     specialty: "Attack",
-    birthDate: "??",
+    birthDate: "January 10",
     species: "Thiren",
     faction: "Metropolitan Order Division",
     color: "#c4a87f",
     images: ["/agent/Cissia.webp"],
     version: "2.7",
     isNew: true,
+    isWip: true,
     events: [],
   },
   // {
@@ -742,19 +848,221 @@ export const agentsData: Agent[] = [
   //   version: "1.3",
   //   events: [],
   // },
-  // {
-  //   id: "lucia",
-  //   name: "Lucia",
-  //   fullName: "Lucia Elowen",
-  //   attribute: "Ether",
-  //   specialty: "Support",
-  //   faction: "Spook Shack",
-  //   rarity: "S",
-  //   color: "#f6e2c0",
-  //   images: ["/agent/Lucia_Elowen.webp"],
-  //   version: "2.3",
-  //   events: [],
-  // },
+  {
+    id: "lucia",
+    name: "Lucia",
+    fullName: "Lucia Elowen",
+    rarity: "S",
+    attribute: "Ether",
+    specialty: "Support",
+    birthDate: "March 17",
+    species: "Thiren",
+    faction: "Spook Shack",
+    color: "#f6e2c0",
+    images: ["/agent/Lucia_Elowen.webp"],
+    version: "2.3",
+    events: [
+      // INVITATION EVENTS
+      {
+        id: "lucia_elowen_inv_01",
+        type: "Invites",
+        title: "Agents of Justice! Move Out!",
+        location: "Lumina Square",
+        choices: [
+          {
+            text: "(Choices don't matter)",
+            result: "Normal",
+          },
+        ],
+      },
+      {
+        id: "lucia_elowen_inv_02",
+        type: "Invites",
+        title: "Beheboth Terror",
+        location: "Lumina Square - Gravity Cinema",
+        choices: [{ text: "(Choices don't matter)", result: "Normal" }],
+      },
+      {
+        id: "lucia_elowen_inv_03",
+        type: "Invites",
+        title: "Exclusive Recipe",
+        location: "Failume Heights",
+        choices: [{ text: "(Choices don't matter)", result: "Normal" }],
+      },
+      {
+        id: "lucia_elowen_inv_04",
+        type: "Invites",
+        title: "Magazine Reading Journey",
+        location: "Sixth Street",
+        choices: [{ text: "(Choices don't matter)", result: "Normal" }],
+      },
+      // WISH EVENTS
+      {
+        id: "lucia_elowen_wish_01",
+        type: "Wish",
+        title: "Energy Drink",
+        location: "Failume Heights - Coff Cafe Stall",
+      },
+      {
+        id: "lucia_elowen_wish_02",
+        type: "Wish",
+        title: "City Whispers",
+        location: "Lumina Square - Overpass",
+      },
+      {
+        id: "lucia_elowen_wish_03",
+        type: "Wish",
+        title: "The Ocean, Dreams, and Ethereals",
+        location: "Port Elpis - Dock",
+      },
+      {
+        id: "lucia_elowen_wish_04",
+        type: "Wish",
+        title: "Antique Tales",
+        location: "Failume Heights - Antique Shop",
+      },
+      {
+        id: "lucia_elowen_wish_05",
+        type: "Wish",
+        title: "A Small Gift",
+        location: "Sixth Street - 141 Convenience Store",
+      },
+      // FUN EVENTS
+      {
+        id: "lucia_elowen_fun_01",
+        type: "Fun",
+        title: "Boobox",
+        location: "Failume Heights",
+      },
+      {
+        id: "lucia_elowen_fun_02",
+        type: "Fun",
+        title: "Vending Machine",
+        location: "Failume Heights",
+      },
+      {
+        id: "lucia_elowen_fun_03",
+        type: "Fun",
+        title: "Check Inn",
+        location: "Failume Heights",
+      },
+      {
+        id: "lucia_elowen_fun_04",
+        type: "Fun",
+        title: "Quality Tea",
+        location: "Lumina Square",
+      },
+      {
+        id: "lucia_elowen_fun_05",
+        type: "Fun",
+        title: "NEPS",
+        location: "Lumina Square",
+      },
+      {
+        id: "lucia_elowen_fun_06",
+        type: "Fun",
+        title: "Dock",
+        location: "Port Elpis",
+      },
+      {
+        id: "lucia_elowen_fun_07",
+        type: "Fun",
+        title: "Sage in a Barrel",
+        location: "Port Elpis",
+      },
+      {
+        id: "lucia_elowen_fun_08",
+        type: "Fun",
+        title: "404 Error",
+        location: "Sixth Street",
+      },
+      {
+        id: "lucia_elowen_fun_09",
+        type: "Fun",
+        title: "Newsstand",
+        location: "Sixth Street",
+      },
+      {
+        id: "lucia_elowen_fun_10",
+        type: "Fun",
+        title: "Officer Mewmew",
+        location: "Sixth Street",
+      },
+      // RANDOM ENCOUNTERS
+      {
+        id: "lucia_elowen_rnd_01",
+        type: "Random",
+        title: "NEPS",
+        location: "Lumina Square (Late Night)",
+        choices: [
+          {
+            text: "(Choices don't matter)",
+            result: "Normal",
+          },
+        ],
+      },
+      {
+        id: "lucia_elowen_rnd_02",
+        type: "Random",
+        title: "Boobox",
+        location: "Failume Heights (Late Night)",
+        choices: [
+          {
+            text: "(Choices don't matter)",
+            result: "Normal",
+          },
+        ],
+      },
+      {
+        id: "lucia_elowen_rnd_03",
+        type: "Random",
+        title: "General Store",
+        location: "Failume Heights (Late Night)",
+        choices: [
+          {
+            text: "(Choices don't matter)",
+            result: "Normal",
+          },
+        ],
+      },
+      {
+        id: "lucia_elowen_rnd_04",
+        type: "Random",
+        title: "Old Capital Association",
+        location: "Failume Heights (Late Night)",
+        choices: [
+          {
+            text: "(Choices don't matter)",
+            result: "Normal",
+          },
+        ],
+      },
+      {
+        id: "lucia_elowen_rnd_05",
+        type: "Random",
+        title: "Yum Cha Sin",
+        location: "Failume Heights (Late Night)",
+        choices: [
+          {
+            text: "(Choices don't matter)",
+            result: "Normal",
+          },
+        ],
+      },
+      {
+        id: "lucia_elowen_rnd_06",
+        type: "Random",
+        title: "Underpass",
+        location: "Sixth Street (Late Night)",
+        choices: [
+          {
+            text: "(Choices don't matter)",
+            result: "Normal",
+          },
+        ],
+      },
+    ],
+  },
   // {
   //   id: "lucy",
   //   name: "Lucy",
@@ -781,22 +1089,250 @@ export const agentsData: Agent[] = [
   //   version: "1.0",
   //   events: [],
   // },
-  // {
-  //   id: "manato",
-  //   name: "Manato",
-  //   fullName: "Komano Manato",
-  //   attribute: "Fire",
-  //   specialty: "Rupture",
-  //   faction: "Spook Shack",
-  //   rarity: "A",
-  //   color: "#f6e2c0",
-  //   images: [
-  //     "/agent/Komano_Manato.webp",
-  //     "/outfit/Komano_Manato_White_Heart_Silhouette.webp",
-  //   ],
-  //   version: "2.3",
-  //   events: [],
-  // },
+  {
+    id: "manato",
+    name: "Manato",
+    fullName: "Komano Manato",
+    rarity: "A",
+    attribute: "Fire",
+    specialty: "Rupture",
+    birthDate: "January 05",
+    species: "Thiren",
+    faction: "Spook Shack",
+    color: "#f6e2c0",
+    images: [
+      "/agent/Komano_Manato.webp",
+      "/outfit/Komano_Manato_White_Heart_Silhouette.webp",
+    ],
+    version: "2.3",
+    events: [
+      // INVITATION EVENTS
+      {
+        id: "komano_manato_inv_01",
+        type: "Invites",
+        title: "A Good Day Can Be Made With Dim Sum!",
+        location: "Failume Heights",
+        choices: [
+          {
+            text: "Shrimp dumplings, char siu buns, and steamed spare ribs.",
+            result: "Normal",
+          },
+          {
+            text: "I wanna eat them all!",
+            result: "Significant",
+          },
+        ],
+      },
+      {
+        id: "komano_manato_inv_02",
+        type: "Invites",
+        title: "A Steaming Taste of Happiness!",
+        location: "Lumina Square",
+        choices: [
+          { text: "Meat! Meat! Meat!", result: "Normal" },
+          {
+            text: "The veggies hit different in hotpot, you know...",
+            result: "Significant",
+          },
+        ],
+      },
+      {
+        id: "komano_manato_inv_03",
+        type: "Invites",
+        title: "Mystery of the Ballet Twins Sculpture!",
+        location: "Ballet Twins Road",
+        choices: [
+          { text: "Manato is Manato...", result: "Normal" },
+          {
+            text: "You don't need to become anyone else...",
+            result: "Significant",
+          },
+        ],
+      },
+      {
+        id: "komano_manato_inv_04",
+        type: "Invites",
+        title: "The Reverb Arena Secret Deal",
+        location: "Reverb Arena",
+        choices: [
+          {
+            text: "No way, I won't abandon my companions.",
+            result: "Significant",
+          },
+          { text: "You should retreat first.", result: "Normal" },
+        ],
+      },
+      // WISH EVENTS
+      {
+        id: "komano_manato_wish_01",
+        type: "Wish",
+        title: "Dog Thiren's Secret Base",
+        location: "Failume Heights - Sailume Bay - Beach",
+      },
+      {
+        id: "komano_manato_wish_02",
+        type: "Wish",
+        title: "Fresh Ingredients",
+        location: "Port Elpis - Dock",
+      },
+      {
+        id: "komano_manato_wish_03",
+        type: "Wish",
+        title: "Neighborhood Commission",
+        location: "Failume Heights - Yum Cha Sin",
+      },
+      {
+        id: "komano_manato_wish_04",
+        type: "Wish",
+        title: "Unconventional Side Hustle",
+        location: "Blazewood - Cheesetopia",
+      },
+      {
+        id: "komano_manato_wish_05",
+        type: "Wish",
+        title: "Miners' Equipment Maintenance",
+        location: "Brant Street Construction Site - Maintenance Area",
+      },
+      // FUN EVENTS
+      {
+        id: "komano_manato_fun_01",
+        type: "Fun",
+        title: "Cliffside",
+        location: "Blazewood",
+      },
+      {
+        id: "komano_manato_fun_02",
+        type: "Fun",
+        title: "Cactus",
+        location: "Blazewood",
+      },
+      {
+        id: "komano_manato_fun_03",
+        type: "Fun",
+        title: "Junction Box",
+        location: "Brant Street Construction Site",
+      },
+      {
+        id: "komano_manato_fun_04",
+        type: "Fun",
+        title: "Supply Store",
+        location: "Brant Street Construction Site",
+      },
+      {
+        id: "komano_manato_fun_05",
+        type: "Fun",
+        title: "Soup Shop",
+        location: "Failume Heights",
+      },
+      {
+        id: "komano_manato_fun_06",
+        type: "Fun",
+        title: "Underground Pass",
+        location: "Failume Heights",
+      },
+      {
+        id: "komano_manato_fun_07",
+        type: "Fun",
+        title: "Good Goods",
+        location: "Failume Heights",
+      },
+      {
+        id: "komano_manato_fun_08",
+        type: "Fun",
+        title: "Sculpture",
+        location: "Failume Heights",
+      },
+      {
+        id: "komano_manato_fun_09",
+        type: "Fun",
+        title: "Tater King",
+        location: "Port Elpis",
+      },
+      {
+        id: "komano_manato_fun_10",
+        type: "Fun",
+        title: "Lighthouse - 2nd Floor",
+        location: "Port Elpis",
+      },
+      // RANDOM ENCOUNTERS
+      {
+        id: "komano_manato_rnd_01",
+        type: "Random",
+        title: "Old Duyi's Physiotherapy Studio",
+        location: "Lumina Square (Evening)",
+        choices: [
+          {
+            text: "(Choices don't matter)",
+            result: "Normal",
+          },
+        ],
+      },
+      {
+        id: "komano_manato_rnd_02",
+        type: "Random",
+        title: "Boobox",
+        location: "Failume Heights (Morning - Afternoon - Evening)",
+        choices: [
+          {
+            text: "(Choices don't matter)",
+            result: "Normal",
+          },
+        ],
+      },
+      {
+        id: "komano_manato_rnd_03",
+        type: "Random",
+        title: "Peace Herbal",
+        location: "Failume Heights (Morning - Afternoon - Evening)",
+        choices: [
+          {
+            text: "(Choices don't matter)",
+            result: "Normal",
+          },
+        ],
+      },
+      {
+        id: "komano_manato_rnd_04",
+        type: "Random",
+        title: "Sailume Bay - Observation Deck",
+        location: "Failume Heights (Late Night)",
+        choices: [
+          {
+            text: "(Choices don't matter)",
+            result: "Normal",
+          },
+        ],
+      },
+      {
+        id: "komano_manato_rnd_05",
+        type: "Random",
+        title: "Beach Event Area",
+        location: "Fantasy Resort (Morning - Afternoon - Evening)",
+        choices: [
+          {
+            text: "I wandered over here without even realizing it...",
+            result: "Decrease",
+          },
+          {
+            text: "It's because of all the wonderful memories we share!",
+            result: "Significant",
+          },
+        ],
+      },
+      {
+        id: "komano_manato_rnd_06",
+        type: "Random",
+        title: "Box Galaxy",
+        location: "Sixth Street (Morning - Afternoon - Evening)",
+        choices: [
+          {
+            text: "(Choices don't matter)",
+            result: "Normal",
+          },
+        ],
+      },
+    ],
+  },
   // {
   //   id: "miyabi",
   //   name: "Miyabi",
@@ -1707,19 +2243,22 @@ export const agentsData: Agent[] = [
       },
     ],
   },
-  // {
-  //   id: "yidhari",
-  //   name: "Yidhari",
-  //   fullName: "Yidhari Murphy",
-  //   attribute: "Ice",
-  //   specialty: "Rupture",
-  //   faction: "Spook Shack",
-  //   rarity: "S",
-  //   color: "#f6e2c0",
-  //   images: ["/agent/Yidhari_Murphy.webp"],
-  //   version: "2.3",
-  //   events: [],
-  // },
+  {
+    id: "yidhari",
+    name: "Yidhari",
+    fullName: "Yidhari Murphy",
+    rarity: "S",
+    attribute: "Ice",
+    specialty: "Rupture",
+    birthDate: "March 19",
+    species: "Thiren",
+    faction: "Spook Shack",
+    color: "#f6e2c0",
+    images: ["/agent/Yidhari_Murphy.webp"],
+    version: "2.3",
+    isWip: true,
+    events: [],
+  },
   // {
   //   id: "yixuan",
   //   name: "Yixuan",

@@ -116,13 +116,13 @@ export default function AgentProfileLayout({ agent }: { agent: Agent }) {
             Agents{" "}
           </span>
         </Link>
-        /<span className="text-foreground/50"> {agent.name}</span>
+        /<span className="text-foreground/50"> {agent.name} </span>
       </div>
 
       {/* main content */}
       <div className="flex flex-col md:flex-row md:gap-4">
         {/* left side - agent content */}
-        <div className="md:w-75 bg-surface-grad shadow-surface rounded-lg p-4 flex md:flex-col gap-4 mb-4 md:mb-0">
+        <div className="md:w-75 bg-surface-grad shadow-surface rounded-lg p-4 flex md:flex-col gap-4 mb-4 md:mb-0 justify-around md:justify-start">
           <div
             className="group w-25 h-25 sm:w-50 sm:h-50 flex items-center justify-center relative self-center md:mb-4"
             onClick={handleOutfitSwap}
@@ -196,7 +196,7 @@ export default function AgentProfileLayout({ agent }: { agent: Agent }) {
 
           {/* agent info */}
           <div className="px-2 pb-2 overflow-hidden">
-            <p className="text-md text-foreground leading-none text-shadow-[0_0_1px_black]">
+            <p className="text-md text-foreground leading-none text-shadow-[0_0_2px_black]">
               {displayName}
             </p>
             <p className="text-xs text-foreground/75 mt-1">{agent.faction}</p>
@@ -225,7 +225,7 @@ export default function AgentProfileLayout({ agent }: { agent: Agent }) {
                 <span className="text-[10px] text-foreground/75 uppercase tracking-widest shrink-0 mt-0.5">
                   Birthday
                 </span>
-                <span className="flex-1 text-xs text-foreground tracking-wider text-right wrap-break-word min-w-0 text-shadow-[0_0_1px_black]">
+                <span className="flex-1 text-xs text-foreground tracking-wider text-right wrap-break-word min-w-0 text-shadow-[0_0_2px_black]">
                   {agent.birthDate}
                 </span>
               </div>
@@ -234,19 +234,19 @@ export default function AgentProfileLayout({ agent }: { agent: Agent }) {
                 <span className="text-[10px] text-foreground/75 uppercase tracking-widest shrink-0 mt-0.5">
                   Species
                 </span>
-                <span className="flex-1 text-xs text-foreground tracking-wider text-right wrap-break-word min-w-0 text-shadow-[0_0_1px_black]">
+                <span className="flex-1 text-xs text-foreground tracking-wider text-right wrap-break-word min-w-0 text-shadow-[0_0_2px_black]">
                   {agent.species}
                 </span>
               </div>
 
-              {/* <div className="flex justify-between items-start gap-x-3">
+              <div className="flex justify-between items-start gap-x-3">
                 <span className="text-[10px] text-foreground/75 uppercase tracking-widest shrink-0 mt-0.5">
-                  Faction
+                  Released
                 </span>
-                <span className="text-xs text-foreground tracking-wider text-right">
-                  {agent.faction}
+                <span className="flex-1 text-xs text-foreground tracking-wider text-right wrap-break-word min-w-0 text-shadow-[0_0_2px_black]">
+                  {agent.version}
                 </span>
-              </div> */}
+              </div>
             </div>
           </div>
         </div>
@@ -266,7 +266,7 @@ export default function AgentProfileLayout({ agent }: { agent: Agent }) {
                   ${
                     isActive
                       ? "h-10 sm:h-12 bg-tab-active text-background"
-                      : "h-8 sm:h-10 bg-surface-grad hover:bg-item-hover-grad text-shadow-[0_0_1px_black]"
+                      : "h-8 sm:h-10 bg-surface-grad hover:bg-item-hover-grad text-shadow-[0_0_2px_black]"
                   }
                 `}
               >
@@ -279,7 +279,7 @@ export default function AgentProfileLayout({ agent }: { agent: Agent }) {
         </div>
 
         {/* right side - event content */}
-        <div className="bg-background w-full rounded-lg shadow-[inset_0_10px_20px_rgba(0,0,0,0.6)] border-2 border-border-soft h-112.5 lg:h-120 relative overflow-hidden flex flex-col">
+        <div className="bg-background w-full rounded-lg shadow-[inset_0_10px_20px_rgba(0,0,0,0.6)] border-2 border-border-soft h-125 lg:h-120 relative overflow-hidden flex flex-col">
           <div className="flex-1 overflow-y-auto p-4 sm:p-6">
             {sortedEvents.length > 0 ? (
               <div className="space-y-4 pb-8">
@@ -371,6 +371,14 @@ export default function AgentProfileLayout({ agent }: { agent: Agent }) {
                         backgroundImage: `linear-gradient(to bottom, transparent -50%, ${a.color} 100%)`,
                       }}
                     >
+                      {a.isWip && (
+                        <span
+                          className="absolute top-2 right-2 z-40 text-[#ffff00] italic text-xs text-shadow-[0_0_2px_black]"
+                          title="Work in Progress"
+                        >
+                          WIP
+                        </span>
+                      )}
                       {/* faction image */}
                       <img
                         src={`/faction/${a.faction.replace(/\s+/g, "_")}.webp`}
