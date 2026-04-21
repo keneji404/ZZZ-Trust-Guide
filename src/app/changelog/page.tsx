@@ -25,7 +25,7 @@ export default function ChangelogPage() {
 
             <div className="bg-surface border-2 border-border-soft rounded-lg p-6 shadow-surface relative -top-5">
               <div className="flex flex-col sm:flex-row sm:items-end gap-2 sm:gap-4 mb-4 border-b border-border-soft pb-4">
-                <h2 className="text-lg text-foreground">April ??, 2026</h2>
+                <h2 className="text-lg text-foreground">April 21, 2026</h2>
               </div>
 
               <ul className="space-y-3 text-foreground/75 text-sm">
