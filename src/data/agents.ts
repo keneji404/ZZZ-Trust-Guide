@@ -1,4 +1,5 @@
 export type TrustResult = "Significant" | "Normal" | "Decrease";
+export type TimeOfDay = "Morning" | "Afternoon" | "Evening" | "Late Night";
 
 export type DialogueChoice = {
   text: string | string[];
@@ -10,6 +11,7 @@ export type TrustEvent = {
   type: "Invites" | "Wish" | "Fun" | "Random";
   title: string;
   location: string;
+  time?: TimeOfDay[];
   image?: string;
   choices?: DialogueChoice[];
 };
@@ -34,22 +36,310 @@ export type Agent = {
 };
 
 export const agentsData: Agent[] = [
-  // {
-  //   id: "alice",
-  //   name: "Alice",
-  //   fullName: "Alice Thymefield",
-  //   attribute: "Physical",
-  //   specialty: "Anomaly",
-  //   faction: "Spook Shack",
-  //   rarity: "S",
-  //   color: "#f6e2c0",
-  //   images: [
-  //     "/agent/Alice_Thymefield.webp",
-  //     "/outfit/Alice_Thymefield_Sea_of_Thyme.webp",
-  //   ],
-  //   version: "2.1",
-  //   events: [],
-  // },
+  {
+    id: "alice",
+    name: "Alice",
+    fullName: "Alice Thymefield",
+    rarity: "S",
+    attribute: "Physical",
+    specialty: "Anomaly",
+    birthDate: "August 30",
+    species: "Thiren",
+    faction: "Spook Shack",
+    color: "#f6e2c0",
+    images: [
+      "/agent/Alice_Thymefield.webp",
+      "/outfit/Alice_Thymefield_Sea_of_Thyme.webp",
+    ],
+    version: "2.1",
+    events: [
+      // INVITATION EVENTS
+      {
+        id: "alice_thymefield_inv_01",
+        type: "Invites",
+        title: "Ah, Very Well Then",
+        location: "Lumina Square",
+        choices: [
+          {
+            text: "You've got a sharp eye for detail!",
+            result: "Normal",
+          },
+          {
+            text: "I know, because I've been watching you too.",
+            result: "Significant",
+          },
+        ],
+      },
+      {
+        id: "alice_thymefield_inv_02",
+        type: "Invites",
+        title: "Bad Student's Adventure",
+        location: "Fantasy Resort",
+        choices: [
+          { text: "Feels like being exiled.", result: "Normal" },
+          { text: "Feels like I'm ruling the world.", result: "Normal" },
+          {
+            text: "Feels like we're the only ones left in the world.",
+            result: "Significant",
+          },
+        ],
+      },
+      {
+        id: "alice_thymefield_inv_03",
+        type: "Invites",
+        title: "First Flea Market",
+        location: "Failume Heights",
+        choices: [
+          { text: "Buy an old fan to keep cool.", result: "Significant" },
+          { text: "Buy symmetrical accessories.", result: "Significant" },
+          { text: "Buy an old radio.", result: "Normal" },
+        ],
+      },
+      {
+        id: "alice_thymefield_inv_04",
+        type: "Invites",
+        title: "Rich Lady's Outer Ring Debut?!",
+        location: "Blazewood",
+        choices: [
+          {
+            text: "She's more at home with ghost stories than motorcycles.",
+            result: "Normal",
+          },
+          { text: "I want to see Alice in biker gear.", result: "Normal" },
+          {
+            text: "You can have your very own symmetrical motorcycle!",
+            result: "Significant",
+          },
+        ],
+      },
+      // WISH EVENTS
+      {
+        id: "alice_thymefield_wish_01",
+        type: "Wish",
+        title: "Tropical Fish and You",
+        location: "Fantasy Resort - Aquarium",
+      },
+      {
+        id: "alice_thymefield_wish_02",
+        type: "Wish",
+        title: "Pinnacle of Symmetrical Aesthetics",
+        location: "Starloop Tower - VIP Lounge",
+      },
+      {
+        id: "alice_thymefield_wish_03",
+        type: "Wish",
+        title: "Urban Legend Check",
+        location: "Ballet Twins Road - Sculpture",
+      },
+      {
+        id: "alice_thymefield_wish_04",
+        type: "Wish",
+        title: "Statue Renovation Project",
+        location: "Port Elpis - Sea God Statue",
+      },
+      {
+        id: "alice_thymefield_wish_05",
+        type: "Wish",
+        title: "Rabbit Tails",
+        location: "Lumina Square - Overpass",
+      },
+      // FUN EVENTS
+      {
+        id: "alice_thymefield_fun_01",
+        type: "Fun",
+        title: "Metro Station - Closed Gate",
+        location: "Ballet Twins Road",
+      },
+      {
+        id: "alice_thymefield_fun_02",
+        type: "Fun",
+        title: "Beach - Stage",
+        location: "Fantasy Resort",
+      },
+      {
+        id: "alice_thymefield_fun_03",
+        type: "Fun",
+        title: "Boutique",
+        location: "Fantasy Resort",
+      },
+      {
+        id: "alice_thymefield_fun_04",
+        type: "Fun",
+        title: "Summer's Key",
+        location: "Fantasy Resort",
+      },
+      {
+        id: "alice_thymefield_fun_05",
+        type: "Fun",
+        title: "Quality Tea",
+        location: "Lumina Square",
+      },
+      {
+        id: "alice_thymefield_fun_06",
+        type: "Fun",
+        title: "Officer Mewmew",
+        location: "Lumina Square",
+      },
+      {
+        id: "alice_thymefield_fun_07",
+        type: "Fun",
+        title: "SREC Poster",
+        location: "Lumina Square",
+      },
+      {
+        id: "alice_thymefield_fun_08",
+        type: "Fun",
+        title: "Tater King",
+        location: "Port Elpis",
+      },
+      {
+        id: "alice_thymefield_fun_09",
+        type: "Fun",
+        title: "Lighthouse - Stairs",
+        location: "Port Elpis",
+      },
+      // RANDOM ENCOUNTERS
+      {
+        id: "alice_thymefield_rnd_01",
+        type: "Random",
+        title: "Plaza Walkway",
+        location: "Ballet Twins Road",
+        time: ["Morning", "Afternoon", "Evening"],
+        choices: [
+          {
+            text: [
+              "It's not worth it. Just drop it.",
+              "I want to see Alice safe and sound",
+            ],
+            result: "Normal",
+          },
+          {
+            text: "Better leave it here",
+            result: "Normal",
+          },
+          {
+            text: "I can take it home, you know",
+            result: "Significant",
+          },
+        ],
+      },
+      {
+        id: "alice_thymefield_rnd_02",
+        type: "Random",
+        title: "Seagaze Road",
+        location: "Fantasy Resort",
+        time: ["Morning", "Afternoon", "Evening"],
+        choices: [
+          {
+            text: "I'm not so scared when I'm with you",
+            result: "Normal",
+          },
+          {
+            text: "I don't think it's that scary",
+            result: "Normal",
+          },
+          {
+            text: "Let's scream together at the scary parts",
+            result: "Significant",
+          },
+        ],
+      },
+      {
+        id: "alice_thymefield_rnd_03",
+        type: "Random",
+        title: "Mystic Wares",
+        location: "Failume Heights",
+        time: ["Morning", "Afternoon", "Evening"],
+        choices: [
+          {
+            text: "She encountered a talking Ethereal",
+            result: "Decrease",
+          },
+          {
+            text: "She wanted to pass the necklace on to someone who loves symmetry",
+            result: "Significant",
+          },
+          {
+            text: "She created another perfectly symmetrical accessory",
+            result: "Normal",
+          },
+        ],
+      },
+      {
+        id: "alice_thymefield_rnd_04",
+        type: "Random",
+        title: "Seagaze Road",
+        location: "Failume Heights",
+        time: ["Morning", "Afternoon", "Evening"],
+        choices: [
+          {
+            text: "Sorry, I was trying to greet you normally...",
+            result: "Normal",
+          },
+          {
+            text: "Sorry! I just really wanted to see your reaction...",
+            result: "Significant",
+          },
+          {
+            text: "Sorry! It just seemed like it'd be fun, so...",
+            result: "Decrease",
+          },
+        ],
+      },
+      {
+        id: "alice_thymefield_rnd_05",
+        type: "Random",
+        title: "Dew Gardening Shop",
+        location: "Lumina Square",
+        time: ["Morning", "Afternoon", "Evening"],
+        choices: [
+          {
+            text: "How you're aristocratic on the surface.",
+            result: "Decrease",
+          },
+          {
+            text: "How you're down-to-earth at your core.",
+            result: "Normal",
+          },
+          {
+            text: "How you face your responsibilities with courage.",
+            result: "Significant",
+          },
+        ],
+      },
+      {
+        id: "alice_thymefield_rnd_06",
+        type: "Random",
+        title: "Port Promenade",
+        location: "Port Elpis",
+        time: ["Morning", "Afternoon", "Evening"],
+        choices: [
+          {
+            text: ["I really like your eyes.", "Your eyes are special."],
+            result: "Decrease",
+          },
+          {
+            text: [
+              "I really like your eyes.",
+              "Your gaze is clear like crystal.",
+            ],
+            result: "Decrease",
+          },
+          {
+            text: [
+              "I really like your eyes.",
+              "Looking into your eyes always gives me strength.",
+            ],
+            result: "Normal",
+          },
+          {
+            text: "Nobody has to be perfect.",
+            result: "Normal",
+          },
+        ],
+      },
+    ],
+  },
   // {
   //   id: "anby",
   //   name: "Anby",
@@ -170,7 +460,7 @@ export const agentsData: Agent[] = [
       {
         id: "aria_fun_03",
         type: "Fun",
-        title: "Floatie Ice Cream Booth at the Beach",
+        title: "Floatie Ice Cream",
         location: "Fantasy Resort",
       },
       {
@@ -220,7 +510,8 @@ export const agentsData: Agent[] = [
         id: "aria_rnd_01",
         type: "Random",
         title: "Souvenir Shop",
-        location: "Fantasy Resort (Morning - Afternoon)",
+        location: "Fantasy Resort",
+        time: ["Morning", "Afternoon"],
         choices: [
           {
             text: "(Choices don't matter)",
@@ -232,7 +523,8 @@ export const agentsData: Agent[] = [
         id: "aria_rnd_02",
         type: "Random",
         title: "141 Convenience Store",
-        location: "Lumina Square (Morning - Afternoon)",
+        location: "Lumina Square",
+        time: ["Morning", "Afternoon"],
         choices: [
           {
             text: "(Choices don't matter)",
@@ -244,7 +536,8 @@ export const agentsData: Agent[] = [
         id: "aria_rnd_03",
         type: "Random",
         title: "Old Duyi's Physiotheraphy Studio",
-        location: "Lumina Square (Morning - Afternoon)",
+        location: "Lumina Square",
+        time: ["Morning", "Afternoon"],
         choices: [
           {
             text: "(Choices don't matter)",
@@ -256,7 +549,8 @@ export const agentsData: Agent[] = [
         id: "aria_rnd_04",
         type: "Random",
         title: "Public Security Office",
-        location: "Lumina Square (Morning - Afternoon)",
+        location: "Lumina Square",
+        time: ["Morning", "Afternoon"],
         choices: [
           {
             text: "(Choices don't matter)",
@@ -269,6 +563,7 @@ export const agentsData: Agent[] = [
         type: "Random",
         title: "Port Promenade",
         location: "Port Elpis",
+        time: ["Morning", "Afternoon"],
         choices: [
           {
             text: "(Choices don't matter)",
@@ -281,6 +576,7 @@ export const agentsData: Agent[] = [
         type: "Random",
         title: "Godfinger",
         location: "Sixth Street",
+        time: ["Morning", "Afternoon"],
         choices: [
           {
             text: "(Choices don't matter)",
@@ -651,7 +947,8 @@ export const agentsData: Agent[] = [
         id: "dialyn_rnd_01",
         type: "Random",
         title: "Peace Herbal",
-        location: "Failume Heights (Morning - Afternoon - Evening)",
+        location: "Failume Heights",
+        time: ["Morning", "Afternoon", "Evening"],
         choices: [
           {
             text: "You worried about something?",
@@ -667,7 +964,8 @@ export const agentsData: Agent[] = [
         id: "dialyn_rnd_02",
         type: "Random",
         title: "Seagaze Road",
-        location: "Failume Heights (Morning - Afternoon - Evening)",
+        location: "Failume Heights",
+        time: ["Morning", "Afternoon", "Evening"],
         choices: [
           {
             text: "But Blick meant well, you know.",
@@ -683,7 +981,8 @@ export const agentsData: Agent[] = [
         id: "dialyn_rnd_03",
         type: "Random",
         title: "Yum Cha Sin",
-        location: "Failume Heights (Morning - Afternoon - Evening)",
+        location: "Failume Heights",
+        time: ["Morning", "Afternoon", "Evening"],
         choices: [
           {
             text: "(Choices don't matter)",
@@ -695,7 +994,8 @@ export const agentsData: Agent[] = [
         id: "dialyn_rnd_04",
         type: "Random",
         title: "Music Festival Satge",
-        location: "Fantasy Resort (Late Night)",
+        location: "Fantasy Resort",
+        time: ["Late Night"],
         choices: [
           {
             text: "(Choices don't matter)",
@@ -707,7 +1007,8 @@ export const agentsData: Agent[] = [
         id: "dialyn_rnd_05",
         type: "Random",
         title: "Branch Street",
-        location: "Sixth Street (Morning - Afternoon - Evening)",
+        location: "Sixth Street",
+        time: ["Morning", "Afternoon", "Evening"],
         choices: [
           {
             text: "(Choices don't matter)",
@@ -719,7 +1020,8 @@ export const agentsData: Agent[] = [
         id: "dialyn_rnd_06",
         type: "Random",
         title: "Newsstand",
-        location: "Sixth Street (Morning - Afternoon - Evening)",
+        location: "Sixth Street",
+        time: ["Morning", "Afternoon", "Evening"],
         choices: [
           {
             text: "Not going with your customer service persona today?",
@@ -811,18 +1113,239 @@ export const agentsData: Agent[] = [
   //   version: "1.1",
   //   events: [],
   // },
-  // {
-  //   id: "ju_fufu",
-  //   name: "Ju Fufu",
-  //   attribute: "Fire",
-  //   specialty: "Stun",
-  //   faction: "Yunkui Summit",
-  //   rarity: "S",
-  //   color: "#f9e88c",
-  //   images: ["/agent/Ju_Fufu.webp"],
-  //   version: "2.0",
-  //   events: [],
-  // },
+  {
+    id: "ju_fufu",
+    name: "Ju Fufu",
+    rarity: "S",
+    attribute: "Fire",
+    specialty: "Stun",
+    birthDate: "January 06",
+    species: "Thiren",
+    faction: "Yunkui Summit",
+    color: "#f9e88c",
+    images: ["/agent/Ju_Fufu.webp"],
+    version: "2.0",
+    events: [
+      // INVITATION EVENTS
+      {
+        id: "ju_fufu_inv_01",
+        type: "Invites",
+        title: "Dusty Treasure",
+        location: "Failume Heights",
+        choices: [
+          {
+            text: "(Choices don't matter)",
+            result: "Normal",
+          },
+        ],
+      },
+      {
+        id: "ju_fufu_inv_02",
+        type: "Invites",
+        title: "Golden Tiger Claw",
+        location: "Sixth Street",
+        choices: [
+          {
+            text: "(Choices don't matter)",
+            result: "Normal",
+          },
+        ],
+      },
+      {
+        id: "ju_fufu_inv_03",
+        type: "Invites",
+        title: "Tiger of Fire",
+        location: "Blazewood",
+        choices: [
+          {
+            text: "(Choices don't matter)",
+            result: "Normal",
+          },
+        ],
+      },
+      {
+        id: "ju_fufu_inv_04",
+        type: "Invites",
+        title: "Tiger of the Sea",
+        location: "Port Elpis",
+        choices: [
+          {
+            text: "(Choices don't matter)",
+            result: "Normal",
+          },
+        ],
+      },
+      // WISH EVENTS
+      {
+        id: "ju_fufu_01",
+        type: "Wish",
+        title: "Like New, Like Old",
+        location: "Failume Heights - Observation Deck",
+      },
+      {
+        id: "ju_fufu_02",
+        type: "Wish",
+        title: "Can't Trust Everything",
+        location: "Failume Heights - Tong Sui Shop",
+      },
+      {
+        id: "ju_fufu_03",
+        type: "Wish",
+        title: "The Feline Family",
+        location: "Failume Heights - Fluffy",
+      },
+      {
+        id: "ju_fufu_04",
+        type: "Wish",
+        title: "Feast from the Tiger's Mouth",
+        location: "Failume Heights - Yum Cha Sin",
+      },
+      {
+        id: "ju_fufu_05",
+        type: "Wish",
+        title: "Treasures",
+        location: "Failume Heights - Antique Store",
+      },
+      // FUN EVENTS
+      {
+        id: "ju_fufu_fun_01",
+        type: "Fun",
+        title: "Suibian Temple",
+        location: "Failume Heights",
+      },
+      {
+        id: "ju_fufu_fun_02",
+        type: "Fun",
+        title: "Mahjong Parlor",
+        location: "Failume Heights",
+      },
+      {
+        id: "ju_fufu_fun_03",
+        type: "Fun",
+        title: "Good Goods",
+        location: "Failume Heights",
+      },
+      {
+        id: "ju_fufu_fun_04",
+        type: "Fun",
+        title: "Devon Pawnshop",
+        location: "Failume Heights",
+      },
+      {
+        id: "ju_fufu_fun_05",
+        type: "Fun",
+        title: "Dew Gardening Shop",
+        location: "Lumina Square",
+      },
+      {
+        id: "ju_fufu_fun_06",
+        type: "Fun",
+        title: "The Simmer",
+        location: "Lumina Square",
+      },
+      {
+        id: "ju_fufu_fun_07",
+        type: "Fun",
+        title: "Gravity Cinema",
+        location: "Lumina Square",
+      },
+      {
+        id: "ju_fufu_fun_08",
+        type: "Fun",
+        title: "Godfinger",
+        location: "Sixth Street",
+      },
+      {
+        id: "ju_fufu_fun_09",
+        type: "Fun",
+        title: "Random Play",
+        location: "Sixth Street",
+      },
+      // RANDOM ENCOUNTERS
+      {
+        id: "ju_fufu_rnd_01",
+        type: "Random",
+        title: "Fluffy",
+        location: "Failume Heights",
+        time: ["Morning", "Afternoon", "Evening"],
+        choices: [
+          {
+            text: "I think you're super scary!",
+            result: "Normal",
+          },
+          {
+            text: "I think you're super adorable!",
+            result: "Decrease",
+          },
+        ],
+      },
+      {
+        id: "ju_fufu_rnd_02",
+        type: "Random",
+        title: "Indestructibles",
+        location: "Failume Heights",
+        time: ["Morning", "Afternoon", "Evening"],
+        choices: [
+          {
+            text: "(Choices don't matter)",
+            result: "Normal",
+          },
+        ],
+      },
+      {
+        id: "ju_fufu_rnd_03",
+        type: "Random",
+        title: "Talking to Pan Yinhu",
+        location: "Failume Heights",
+        time: ["Morning", "Afternoon", "Evening"],
+        choices: [
+          {
+            text: "(Choices don't matter)",
+            result: "Normal",
+          },
+        ],
+      },
+      {
+        id: "ju_fufu_rnd_04",
+        type: "Random",
+        title: "Near the Bench",
+        location: "Failume Heights",
+        time: ["Morning", "Afternoon", "Evening"],
+        choices: [
+          {
+            text: "(Choices don't matter)",
+            result: "Normal",
+          },
+        ],
+      },
+      {
+        id: "ju_fufu_rnd_05",
+        type: "Random",
+        title: "The Simmer",
+        location: "Lumina Square",
+        time: ["Morning", "Afternoon", "Evening"],
+        choices: [
+          {
+            text: "(Choices don't matter)",
+            result: "Normal",
+          },
+        ],
+      },
+      {
+        id: "ju_fufu_rnd_06",
+        type: "Random",
+        title: "Waterfall Soup",
+        location: "Sixth Street",
+        time: ["Morning", "Afternoon", "Evening"],
+        choices: [
+          {
+            text: "(Choices don't matter)",
+            result: "Normal",
+          },
+        ],
+      },
+    ],
+  },
   // {
   //   id: "koleda",
   //   name: "Koleda",
@@ -993,7 +1516,8 @@ export const agentsData: Agent[] = [
         id: "lucia_elowen_rnd_01",
         type: "Random",
         title: "NEPS",
-        location: "Lumina Square (Late Night)",
+        location: "Lumina Square",
+        time: ["Late Night"],
         choices: [
           {
             text: "(Choices don't matter)",
@@ -1005,7 +1529,8 @@ export const agentsData: Agent[] = [
         id: "lucia_elowen_rnd_02",
         type: "Random",
         title: "Boobox",
-        location: "Failume Heights (Late Night)",
+        location: "Failume Heights",
+        time: ["Late Night"],
         choices: [
           {
             text: "(Choices don't matter)",
@@ -1016,8 +1541,9 @@ export const agentsData: Agent[] = [
       {
         id: "lucia_elowen_rnd_03",
         type: "Random",
-        title: "General Store",
-        location: "Failume Heights (Late Night)",
+        title: "Good Goods",
+        location: "Failume Heights",
+        time: ["Late Night"],
         choices: [
           {
             text: "(Choices don't matter)",
@@ -1029,7 +1555,8 @@ export const agentsData: Agent[] = [
         id: "lucia_elowen_rnd_04",
         type: "Random",
         title: "Old Capital Association",
-        location: "Failume Heights (Late Night)",
+        location: "Failume Heights",
+        time: ["Late Night"],
         choices: [
           {
             text: "(Choices don't matter)",
@@ -1041,7 +1568,8 @@ export const agentsData: Agent[] = [
         id: "lucia_elowen_rnd_05",
         type: "Random",
         title: "Yum Cha Sin",
-        location: "Failume Heights (Late Night)",
+        location: "Failume Heights",
+        time: ["Late Night"],
         choices: [
           {
             text: "(Choices don't matter)",
@@ -1053,7 +1581,8 @@ export const agentsData: Agent[] = [
         id: "lucia_elowen_rnd_06",
         type: "Random",
         title: "Underpass",
-        location: "Sixth Street (Late Night)",
+        location: "Sixth Street",
+        time: ["Late Night"],
         choices: [
           {
             text: "(Choices don't matter)",
@@ -1259,7 +1788,8 @@ export const agentsData: Agent[] = [
         id: "komano_manato_rnd_01",
         type: "Random",
         title: "Old Duyi's Physiotherapy Studio",
-        location: "Lumina Square (Evening)",
+        location: "Lumina Square",
+        time: ["Evening"],
         choices: [
           {
             text: "(Choices don't matter)",
@@ -1271,7 +1801,8 @@ export const agentsData: Agent[] = [
         id: "komano_manato_rnd_02",
         type: "Random",
         title: "Boobox",
-        location: "Failume Heights (Morning - Afternoon - Evening)",
+        location: "Failume Heights",
+        time: ["Morning", "Afternoon", "Evening"],
         choices: [
           {
             text: "(Choices don't matter)",
@@ -1283,7 +1814,9 @@ export const agentsData: Agent[] = [
         id: "komano_manato_rnd_03",
         type: "Random",
         title: "Peace Herbal",
-        location: "Failume Heights (Morning - Afternoon - Evening)",
+        location: "Failume Heights",
+        time: ["Morning", "Afternoon", "Evening"],
+        image: "/event/komano_manato/komano_manato_rnd_03.webp",
         choices: [
           {
             text: "(Choices don't matter)",
@@ -1295,7 +1828,8 @@ export const agentsData: Agent[] = [
         id: "komano_manato_rnd_04",
         type: "Random",
         title: "Sailume Bay - Observation Deck",
-        location: "Failume Heights (Late Night)",
+        location: "Failume Heights",
+        time: ["Late Night"],
         choices: [
           {
             text: "(Choices don't matter)",
@@ -1307,7 +1841,8 @@ export const agentsData: Agent[] = [
         id: "komano_manato_rnd_05",
         type: "Random",
         title: "Beach Event Area",
-        location: "Fantasy Resort (Morning - Afternoon - Evening)",
+        location: "Fantasy Resort",
+        time: ["Morning", "Afternoon", "Evening"],
         choices: [
           {
             text: "I wandered over here without even realizing it...",
@@ -1323,7 +1858,8 @@ export const agentsData: Agent[] = [
         id: "komano_manato_rnd_06",
         type: "Random",
         title: "Box Galaxy",
-        location: "Sixth Street (Morning - Afternoon - Evening)",
+        location: "Sixth Street",
+        time: ["Morning", "Afternoon", "Evening"],
         choices: [
           {
             text: "(Choices don't matter)",
@@ -1466,7 +2002,7 @@ export const agentsData: Agent[] = [
       {
         id: "nangong_yu_fun_04",
         type: "Fun",
-        title: "General Store",
+        title: "Good Goods",
         location: "Failume Heights",
       },
       {
@@ -1504,7 +2040,8 @@ export const agentsData: Agent[] = [
         id: "nangong_yu_rnd_01",
         type: "Random",
         title: "Fluffy",
-        location: "Failume Heights (Morning - Afternoon)",
+        location: "Failume Heights",
+        time: ["Morning", "Afternoon"],
         choices: [
           {
             text: "(Choices don't matter)",
@@ -1516,7 +2053,8 @@ export const agentsData: Agent[] = [
         id: "nangong_yu_rnd_02",
         type: "Random",
         title: "Stormguard",
-        location: "Failume Heights (Morning - Afternoon))",
+        location: "Failume Heights",
+        time: ["Morning", "Afternoon"],
         choices: [
           {
             text: "(Choices don't matter)",
@@ -1528,7 +2066,8 @@ export const agentsData: Agent[] = [
         id: "nangong_yu_rnd_03",
         type: "Random",
         title: "404 Livehouse",
-        location: "Sixth Street (Morning - Afternoon)",
+        location: "Sixth Street",
+        time: ["Morning", "Afternoon"],
         choices: [
           {
             text: "(Choices don't matter)",
@@ -1540,7 +2079,8 @@ export const agentsData: Agent[] = [
         id: "nangong_yu_rnd_04",
         type: "Random",
         title: "Bardic Needle",
-        location: "Sixth Street (Morning - Afternoon)",
+        location: "Sixth Street",
+        time: ["Morning", "Afternoon"],
         choices: [
           {
             text: "(Choices don't matter)",
@@ -1552,7 +2092,8 @@ export const agentsData: Agent[] = [
         id: "nangong_yu_rnd_05",
         type: "Random",
         title: "Coff Cafe",
-        location: "Sixth Street (Morning - Afternoon)",
+        location: "Sixth Street",
+        time: ["Morning", "Afternoon"],
         choices: [
           {
             text: "(Choices don't matter)",
@@ -1564,7 +2105,8 @@ export const agentsData: Agent[] = [
         id: "nangong_yu_rnd_06",
         type: "Random",
         title: "Waterfall Soup",
-        location: "Sixth Street (Morning - Afternoon)",
+        location: "Sixth Street",
+        time: ["Morning", "Afternoon"],
         choices: [
           {
             text: "(Choices don't matter)",
@@ -1602,31 +2144,541 @@ export const agentsData: Agent[] = [
   //   version: "1.0",
   //   events: [],
   // },
-  // {
-  //   id: "orphie_and_magus",
-  //   name: "Orphie & Magus",
-  //   fullName: "Orphie Magnusson & Magus",
-  //   attribute: "Fire",
-  //   specialty: "Attack",
-  //   faction: "Obol Squad",
-  //   rarity: "S",
-  //   color: "#dcac48",
-  //   images: ["/agent/Orphie_Magnusson_&_Magus.webp"],
-  //   version: "2.2",
-  //   events: [],
-  // },
-  // {
-  //   id: "pan_yinhu",
-  //   name: "Pan Yinhu",
-  //   attribute: "Physical",
-  //   specialty: "Defense",
-  //   faction: "Yunkui Summit",
-  //   rarity: "A",
-  //   color: "#f9e88c",
-  //   images: ["/agent/Pan_Yinhu.webp", "/outfit/Pan_Yinhu_Culinary_Jewel.webp"],
-  //   version: "2.0",
-  //   events: [],
-  // },
+  {
+    id: "orphie_and_magus",
+    name: "Orphie & Magus",
+    fullName: "Orphie Magnusson & Magus",
+    rarity: "S",
+    attribute: "Fire",
+    specialty: "Attack",
+    birthDate: "November 3",
+    species: "Human & Intelligent Construct",
+    faction: "Obol Squad",
+    color: "#dcac48",
+    images: ["/agent/Orphie_Magnusson_&_Magus.webp"],
+    version: "2.2",
+    events: [
+      // INVITATION EVENTS
+      {
+        id: "orphie_and_magus_inv_01",
+        type: "Invites",
+        title: "If Doomsday Comes",
+        location: "Failume Heights",
+        choices: [
+          {
+            text: "The vase.",
+            result: "Normal",
+          },
+          {
+            text: "The guitar.",
+            result: "Normal",
+          },
+          {
+            text: "Orphie.",
+            result: "Significant",
+          },
+        ],
+      },
+      {
+        id: "orphie_and_magus_inv_02",
+        type: "Invites",
+        title: "Strange Yet Familiar",
+        location: "Port Elpis",
+        choices: [
+          {
+            text: "(Choices don't matter)",
+            result: "Significant",
+          },
+        ],
+      },
+      {
+        id: "orphie_and_magus_inv_03",
+        type: "Invites",
+        title: "The Best Gift",
+        location: "Failume Heights",
+        choices: [
+          {
+            text: "(Choices don't matter)",
+            result: "Significant",
+          },
+        ],
+      },
+      {
+        id: "orphie_and_magus_inv_04",
+        type: "Invites",
+        title: "The Taste of Coffee",
+        location: "Fantasy Resort",
+        choices: [
+          {
+            text: "Mint Espresso.",
+            result: "Decrease",
+          },
+          {
+            text: "Mochaccino.",
+            result: "Normal",
+          },
+          {
+            text: "Fruit Foam Cappuccino.",
+            result: "Significant",
+          },
+        ],
+      },
+      // WISH EVENTS
+      {
+        id: "orphie_and_magus_wish_01",
+        type: "Wish",
+        title: "Nighttime Horror Fantasy",
+        location: "Failume Heights - Sailume Bay",
+      },
+      {
+        id: "orphie_and_magus_wish_02",
+        type: "Wish",
+        title: "Social Rendezvous Training Rules",
+        location: "Port Elpis - Dock",
+      },
+      {
+        id: "orphie_and_magus_wish_03",
+        type: "Wish",
+        title: "Farewell and Reunion",
+        location: "Failume Heights - Cable Car Station",
+      },
+      {
+        id: "orphie_and_magus_wish_04",
+        type: "Wish",
+        title: "Devil Chili Soda",
+        location: "Reverb Arena",
+      },
+      {
+        id: "orphie_and_magus_wish_05",
+        type: "Wish",
+        title: "One Maintenance Oil Special, Please",
+        location: "Blazewood",
+      },
+      // FUN EVENTS
+      {
+        id: "orphie_and_magus_fun_01",
+        type: "Fun",
+        title: "The Simmer",
+        location: "Lumina Square",
+      },
+      {
+        id: "orphie_and_magus_fun_02",
+        type: "Fun",
+        title: "Playground",
+        location: "Lumina Square",
+      },
+      {
+        id: "orphie_and_magus_fun_03",
+        type: "Fun",
+        title: "Good Goods",
+        location: "Failume Heights",
+      },
+      {
+        id: "orphie_and_magus_fun_04",
+        type: "Fun",
+        title: "Devon Pawnshop",
+        location: "Failume Heights",
+      },
+      {
+        id: "orphie_and_magus_fun_05",
+        type: "Fun",
+        title: "Coastal Fishing Spot",
+        location: "Port Elpis",
+      },
+      {
+        id: "orphie_and_magus_fun_06",
+        type: "Fun",
+        title: "Box Galaxy",
+        location: "Sixth Street",
+      },
+      {
+        id: "orphie_and_magus_fun_07",
+        type: "Fun",
+        title: "Coff Cafe",
+        location: "Sixth Street",
+      },
+      {
+        id: "orphie_and_magus_fun_08",
+        type: "Fun",
+        title: "Random Play",
+        location: "Sixth Street",
+      },
+      {
+        id: "orphie_and_magus_fun_09",
+        type: "Fun",
+        title: "Turbo",
+        location: "Sixth Street",
+      },
+      // RANDOM ENCOUNTERS
+      {
+        id: "orphie_and_magus_rnd_01",
+        type: "Random",
+        title: "Fluffy",
+        location: "Lumina Square",
+        time: ["Afternoon", "Evening"],
+        choices: [
+          {
+            text: "(Choices don't matter)",
+            result: "Normal",
+          },
+        ],
+      },
+      {
+        id: "orphie_and_magus_rnd_02",
+        type: "Random",
+        title: "Fluffy",
+        location: "Failume Heights",
+        time: ["Morning", "Afternoon", "Evening"],
+        choices: [
+          {
+            text: "(Choices don't matter)",
+            result: "Normal",
+          },
+        ],
+      },
+      {
+        id: "orphie_and_magus_rnd_03",
+        type: "Random",
+        title: "Mystic Wares",
+        location: "Failume Heights",
+        time: ["Morning", "Afternoon", "Evening"],
+        choices: [
+          {
+            text: "(Choices don't matter)",
+            result: "Normal",
+          },
+        ],
+      },
+      {
+        id: "orphie_and_magus_rnd_04",
+        type: "Random",
+        title: "Seagaze Road",
+        location: "Failume Heights",
+        time: ["Morning", "Afternoon", "Evening"],
+        choices: [
+          {
+            text: "Sure...",
+            result: "Normal",
+          },
+          {
+            text: "No problem!",
+            result: "Normal",
+          },
+          {
+            text: "I was just thinking the same!",
+            result: "Significant",
+          },
+        ],
+      },
+      {
+        id: "orphie_and_magus_rnd_05",
+        type: "Random",
+        title: "Coff Cafe Stall",
+        location: "Failume Heights",
+        time: ["Morning", "Afternoon", "Evening"],
+        choices: [
+          {
+            text: "(Choices don't matter)",
+            result: "Normal",
+          },
+        ],
+      },
+      {
+        id: "orphie_and_magus_rnd_06",
+        type: "Random",
+        title: "Waterfall Soup",
+        location: "Sixth Street",
+        time: ["Evening", "Late Night"],
+        choices: [
+          {
+            text: "(Choices don't matter)",
+            result: "Normal",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: "pan_yinhu",
+    name: "Pan Yinhu",
+    rarity: "A",
+    attribute: "Physical",
+    specialty: "Defense",
+    birthDate: "May 10",
+    species: "Thiren",
+    faction: "Yunkui Summit",
+    color: "#f9e88c",
+    images: ["/agent/Pan_Yinhu.webp", "/outfit/Pan_Yinhu_Culinary_Jewel.webp"],
+    version: "2.0",
+    events: [
+      // INVITATION EVENTS
+      {
+        id: "pan_yinhu_inv_01",
+        type: "Invites",
+        title: "Cactus Style!",
+        location: "Blazewood",
+        choices: [
+          {
+            text: "I thought you said this wouldn't be intense...",
+            result: "Normal",
+          },
+          {
+            text: "It hurt, but surprisingly very satisfying.",
+            result: "Normal",
+          },
+          {
+            text: "When's the next training session?",
+            result: "Significant",
+          },
+        ],
+      },
+      {
+        id: "pan_yinhu_inv_02",
+        type: "Invites",
+        title: "Divination!",
+        location: "Failume Heights",
+        choices: [
+          {
+            text: "(Trade two fire for two ice)",
+            result: "Significant",
+          },
+          {
+            text: "(Trade one fire for one ice)",
+            result: "Normal",
+          },
+        ],
+      },
+      {
+        id: "pan_yinhu_inv_03",
+        type: "Invites",
+        title: "Exclusive Intel Source!",
+        location: "Sixth Street",
+        choices: [
+          {
+            text: "(Choices don't matter)",
+            result: "Significant",
+          },
+        ],
+      },
+      {
+        id: "pan_yinhu_inv_04",
+        type: "Invites",
+        title: "No middleman markup!",
+        location: "Port Elpis",
+        choices: [
+          {
+            text: "I think one crate is a little too much.",
+            result: "Normal",
+          },
+          {
+            text: "I think one crate is not enough.",
+            result: "Normal",
+          },
+          {
+            text: "With your cooking? We'll eat the whole crate without a problem.",
+            result: "Significant",
+          },
+        ],
+      },
+      // WISH EVENTS
+      {
+        id: "pan_yinhu_01",
+        type: "Wish",
+        title: "The Temptation of Junk Food",
+        location: "Port Elpis - Fry stand",
+      },
+      {
+        id: "pan_yinhu_02",
+        type: "Wish",
+        title: "Steal-the-Deal Bonanza!",
+        location: "Failume Heights - Good Goods",
+      },
+      {
+        id: "pan_yinhu_03",
+        type: "Wish",
+        title: "The Joy of Mixing Drinks",
+        location: "Reverb Arena - Drinks Stand",
+      },
+      {
+        id: "pan_yinhu_04",
+        type: "Wish",
+        title: "Perfect Training Spot",
+        location: "Lumina Square - Riverside",
+      },
+      {
+        id: "pan_yinhu_05",
+        type: "Wish",
+        title: "Inspiration for New Recipes!",
+        location: "Failume Heights - Yum Cha Sin",
+      },
+      // FUN EVENTS
+      {
+        id: "pan_yinhu_fun_01",
+        type: "Fun",
+        title: "Cyclical Destiny Sculpture",
+        location: "Failume Heights",
+      },
+      {
+        id: "pan_yinhu_fun_02",
+        type: "Fun",
+        title: "Check Inn",
+        location: "Failume Heights",
+      },
+      {
+        id: "pan_yinhu_fun_03",
+        type: "Fun",
+        title: "The Simmer",
+        location: "Lumina Square",
+      },
+      {
+        id: "pan_yinhu_fun_04",
+        type: "Fun",
+        title: "Quality Tea",
+        location: "Lumina Square",
+      },
+      {
+        id: "pan_yinhu_fun_05",
+        type: "Fun",
+        title: "SREC Poster",
+        location: "Lumina Square",
+      },
+      {
+        id: "pan_yinhu_fun_06",
+        type: "Fun",
+        title: "Sage in a Barrel",
+        location: "Port Elpis",
+      },
+      {
+        id: "pan_yinhu_fun_07",
+        type: "Fun",
+        title: "Blast Boom Stand",
+        location: "Reverb Arena",
+      },
+      // RANDOM ENCOUNTERS
+      {
+        id: "pan_yinhu_rnd_01",
+        type: "Random",
+        title: "Officer Mewmew",
+        location: "Brant Street Construction Site",
+        time: ["Morning", "Afternoon", "Evening"],
+        choices: [
+          {
+            text: "Calculator is better.",
+            result: "Decrease",
+          },
+          {
+            text: "Abacus is better.",
+            result: "Normal",
+          },
+        ],
+      },
+      {
+        id: "pan_yinhu_rnd_02",
+        type: "Random",
+        title: "Lumina Galleria",
+        location: "Lumina Square",
+        time: ["Morning", "Afternoon", "Evening"],
+        choices: [
+          {
+            text: "I'll squeeze in there with you!",
+            result: "Normal",
+          },
+          {
+            text: "I'll distract them!",
+            result: "Significant",
+          },
+          {
+            text: "I'll hold them off for you!",
+            result: "Decrease",
+          },
+        ],
+      },
+      {
+        id: "pan_yinhu_rnd_03",
+        type: "Random",
+        title: "Lumina Square",
+        location: "Failume Heights",
+        time: ["Morning", "Afternoon", "Evening"],
+        choices: [
+          {
+            text: "How many mild soup base options are there?",
+            result: "Normal",
+          },
+          {
+            text: "How's the ingredient variety?",
+            result: "Normal",
+          },
+          {
+            text: "Is there a hot water kettle for rinsing utensils?",
+            result: "Significant",
+          },
+        ],
+      },
+      {
+        id: "pan_yinhu_rnd_04",
+        type: "Random",
+        title: "Devon Pawnshop",
+        location: "Failume Heights",
+        time: ["Morning", "Afternoon", "Evening"],
+        choices: [
+          {
+            text: "It's more like a freshly shed clump of fur.",
+            result: "Significant",
+          },
+          {
+            text: "It's more like a freshly coughed-up hairball.",
+            result: "Normal",
+          },
+          {
+            text: "It's more like a bunch of weeds.",
+            result: "Decrease",
+          },
+        ],
+      },
+      {
+        id: "pan_yinhu_rnd_05",
+        type: "Random",
+        title: "Yum Cha Sin",
+        location: "Failume Heights",
+        time: ["Morning", "Afternoon", "Evening"],
+        choices: [
+          {
+            text: "Not enough meat, maybe?",
+            result: "Normal",
+          },
+          {
+            text: "Not enough variety in the menu?",
+            result: "Normal",
+          },
+          {
+            text: "Does the food taste different from before?",
+            result: "Significant",
+          },
+        ],
+      },
+      {
+        id: "pan_yinhu_rnd_06",
+        type: "Random",
+        title: "Box Galaxy",
+        location: "Sixth Street",
+        time: ["Morning", "Afternoon", "Evening"],
+        choices: [
+          {
+            text: "Your heart is resisting, senior.",
+            result: "Normal",
+          },
+          {
+            text: "Deep down, you know cheating like this isn't right.",
+            result: "Significant",
+          },
+          {
+            text: "You're exhausted.",
+            result: "Decrease",
+          },
+        ],
+      },
+    ],
+  },
   // {
   //   id: "piper",
   //   name: "Piper",
@@ -1665,18 +2717,315 @@ export const agentsData: Agent[] = [
   //   version: "1.1",
   //   events: [],
   // },
-  // {
-  //   id: "seed",
-  //   name: "Seed",
-  //   attribute: "Electric",
-  //   specialty: "Attack",
-  //   faction: "Obol Squad",
-  //   rarity: "S",
-  //   color: "#dcac48",
-  //   images: ["/agent/Seed.webp"],
-  //   version: "2.2",
-  //   events: [],
-  // },
+  {
+    id: "seed",
+    name: "Seed",
+    rarity: "S",
+    attribute: "Electric",
+    specialty: "Attack",
+    birthDate: "November 22",
+    species: "Human & Intelligent Construct",
+    faction: "Obol Squad",
+    color: "#dcac48",
+    images: ["/agent/Seed.webp"],
+    version: "2.2",
+    events: [
+      // INVITATION EVENTS
+      {
+        id: "seed_inv_01",
+        type: "Invites",
+        title: "A World Where Loved Ones Exist",
+        location: "Sixth Street",
+        choices: [
+          {
+            text: [
+              "I'd keep this one as is, and draw another one.",
+              "I want to put Seed in my new drawing.",
+            ],
+            result: "Significant",
+          },
+          {
+            text: "I'd draw more flowers.",
+            result: "Normal",
+          },
+          {
+            text: "I'd to draw more friends.",
+            result: "Normal",
+          },
+        ],
+      },
+      {
+        id: "seed_inv_02",
+        type: "Invites",
+        title: "Cramped Hang Out",
+        location: "Lumina Square",
+        choices: [
+          {
+            text: [
+              "That your hair has a floral scent.",
+              "They should mass produce flower-scented concrete pipes.",
+            ],
+            result: "Significant",
+          },
+          {
+            text: "That the concrete pipe might be a time machine.",
+            result: "Normal",
+          },
+          {
+            text: "That it's not too hot inside, saves on the electricity bill.",
+            result: "Normal",
+          },
+        ],
+      },
+      {
+        id: "seed_inv_03",
+        type: "Invites",
+        title: "Ehn-na? Ehn-na-wah-dah-ehn-na!",
+        location: "Failume Heights",
+        choices: [
+          {
+            text: "Long live the Phantom Bangboo Brigade!",
+            result: "Normal",
+          },
+          {
+            text: "Thanks for helping me out!",
+            result: "Normal",
+          },
+          {
+            text: "I wanna go home with you.",
+            result: "Significant",
+          },
+        ],
+      },
+      {
+        id: "seed_inv_04",
+        type: "Invites",
+        title: "What the Waves Will Wash Away",
+        location: "Fantasy Resort",
+        choices: [
+          {
+            text: "What wasn't washed away was their reply.",
+            result: "Significant",
+          },
+          {
+            text: "It's to make sure we don't forget.",
+            result: "Normal",
+          },
+          {
+            text: "To save some words for next time.",
+            result: "Normal",
+          },
+        ],
+      },
+      // WISH EVENTS
+      {
+        id: "seed_wish_01",
+        type: "Wish",
+        title: "Bangboo Mechanic",
+        location: "Blazewood - Lower-Level",
+      },
+      {
+        id: "seed_wish_02",
+        type: "Wish",
+        title: "Life Simulation Class",
+        location: "Failume Heights - Fluffy",
+      },
+      {
+        id: "seed_wish_03",
+        type: "Wish",
+        title: "Return to the Sea",
+        location: "Fantasy Resort - Aquarium",
+      },
+      {
+        id: "seed_wish_04",
+        type: "Wish",
+        title: "Director, Take Your Position",
+        location: "Lumina Square - Gravity Cinema",
+      },
+      {
+        id: "seed_wish_05",
+        type: "Wish",
+        title: "Narrow Space",
+        location: "Sixth Street - Street Poop Bangboo",
+      },
+      // FUN EVENTS
+      {
+        id: "seed_fun_01",
+        type: "Fun",
+        title: "Cyclical Destiny Sculpture",
+        location: "Failume Heights",
+      },
+      {
+        id: "seed_fun_02",
+        type: "Fun",
+        title: "Indestructable",
+        location: "Failume Heights",
+      },
+      {
+        id: "seed_fun_03",
+        type: "Fun",
+        title: "Suibian Temple",
+        location: "Failume Heights",
+      },
+      {
+        id: "seed_fun_04",
+        type: "Fun",
+        title: "Floatie Ice Cream",
+        location: "Fantasy Resort",
+      },
+      {
+        id: "seed_fun_05",
+        type: "Fun",
+        title: "Archipelago Shoot",
+        location: "Fantasy Resort",
+      },
+      {
+        id: "seed_fun_06",
+        type: "Fun",
+        title: "Dew Gardening Shop",
+        location: "Lumina Square",
+      },
+      {
+        id: "seed_fun_07",
+        type: "Fun",
+        title: "Capsule Hotel",
+        location: "Lumina Square",
+      },
+      {
+        id: "seed_fun_08",
+        type: "Fun",
+        title: "Godfinger",
+        location: "Sixth Street",
+      },
+      {
+        id: "seed_fun_09",
+        type: "Fun",
+        title: "Sage in a Barrel",
+        location: "Sixth Street",
+      },
+      {
+        id: "seed_fun_10",
+        type: "Fun",
+        title: "Box Galaxy",
+        location: "Sixth Street",
+      },
+      // RANDOM ENCOUNTERS
+      {
+        id: "seed_rnd_01",
+        type: "Random",
+        title: "Talking to Grace",
+        location: "Brant Street Construction Site",
+        time: ["Morning", "Afternoon", "Evening"],
+        choices: [
+          {
+            text: "Grace and I are friends!",
+            result: "Decrease",
+          },
+          {
+            text: "Of course, I love these machines!",
+            result: "Normal",
+          },
+          {
+            text: "I came here looking for you, Seed.",
+            result: "Normal",
+          },
+        ],
+      },
+      {
+        id: "seed_rnd_02",
+        type: "Random",
+        title: "Talking to Orphie",
+        location: "Failume Heights",
+        time: ["Morning", "Afternoon", "Evening"],
+        choices: [
+          {
+            text: "You can give me a nickname!",
+            result: "Normal",
+          },
+          {
+            text: "Let's just stick to codenames.",
+            result: "Decrease",
+          },
+        ],
+      },
+      {
+        id: "seed_rnd_03",
+        type: "Random",
+        title: "Devon Pawnshop",
+        location: "Failume Heights",
+        time: ["Morning", "Afternoon", "Evening"],
+        choices: [
+          {
+            text: "She just wanted her father's company.",
+            result: "Significant",
+          },
+          {
+            text: "These gifts are so last season!",
+            result: "Decrease",
+          },
+          {
+            text: "Should give a handmade gift.",
+            result: "Normal",
+          },
+        ],
+      },
+      {
+        id: "seed_rnd_04",
+        type: "Random",
+        title: "Talking to the Lady in White",
+        location: "Failume Heights",
+        time: ["Evening", "Late Night"],
+        choices: [
+          {
+            text: "You touched her heart.",
+            result: "Normal",
+          },
+          {
+            text: "Can you really get that much from just feeling it?",
+            result: "Decrease",
+          },
+        ],
+      },
+      {
+        id: "seed_rnd_05",
+        type: "Random",
+        title: "Talking to Trigger",
+        location: "Failume Heights",
+        time: ["Morning", "Afternoon"],
+        choices: [
+          {
+            text: "(Point to the sleeping cat)",
+            result: "Normal",
+          },
+          {
+            text: "(Point to Trigger's ponytail)",
+            result: "Normal",
+          },
+          {
+            text: "(Point to own cheek)",
+            result: "Significant",
+          },
+        ],
+      },
+      {
+        id: "seed_rnd_06",
+        type: "Random",
+        title: "Talking to Soldier 11",
+        location: "Lumina Square",
+        time: ["Morning", "Afternoon", "Evening"],
+        choices: [
+          {
+            text: "It smells like flowers... like I've stepped into a flower field...",
+            result: "Significant",
+          },
+          {
+            text: "It smells like paper... like I've walked into a bookstore...",
+            result: "Normal",
+          },
+        ],
+      },
+    ],
+  },
   // {
   //   id: "seth",
   //   name: "Seth",
@@ -1815,7 +3164,7 @@ export const agentsData: Agent[] = [
       {
         id: "sunna_fun_02",
         type: "Fun",
-        title: "Hotpot Restaurant",
+        title: "The Simmer",
         location: "Lumina Square",
       },
       {
@@ -1871,7 +3220,8 @@ export const agentsData: Agent[] = [
         id: "sunna_rnd_01",
         type: "Random",
         title: "Coff Cafe",
-        location: "Lumina Square (Afternoon)",
+        location: "Lumina Square",
+        time: ["Afternoon"],
         choices: [
           {
             text: "(Choices don't matter)",
@@ -1883,7 +3233,8 @@ export const agentsData: Agent[] = [
         id: "sunna_rnd_02",
         type: "Random",
         title: "JC Pharmacy",
-        location: "Lumina Square (Morning - Afternoon)",
+        location: "Lumina Square",
+        time: ["Morning", "Afternoon"],
         choices: [
           {
             text: "(Choices don't matter)",
@@ -1895,7 +3246,8 @@ export const agentsData: Agent[] = [
         id: "sunna_rnd_03",
         type: "Random",
         title: "N.E.P.S - Inside",
-        location: "Lumina Square (Morning - Afternoon)",
+        location: "Lumina Square",
+        time: ["Morning", "Afternoon"],
         choices: [
           {
             text: "(Choices don't matter)",
@@ -1907,7 +3259,8 @@ export const agentsData: Agent[] = [
         id: "sunna_rnd_04",
         type: "Random",
         title: "Yum Cha Sin",
-        location: "Failume Heights (Morning - Afternoon)",
+        location: "Failume Heights",
+        time: ["Morning", "Afternoon"],
         choices: [
           {
             text: "(Choices don't matter)",
@@ -1919,7 +3272,8 @@ export const agentsData: Agent[] = [
         id: "sunna_rnd_05",
         type: "Random",
         title: "404 Error",
-        location: "Sixth Street (Morning - Afternoon)",
+        location: "Sixth Street",
+        time: ["Morning", "Afternoon"],
         choices: [
           {
             text: "(Choices don't matter)",
@@ -1931,7 +3285,8 @@ export const agentsData: Agent[] = [
         id: "sunna_rnd_06",
         type: "Random",
         title: "Coff Cafe",
-        location: "Sixth Street (Morning - Afternoon)",
+        location: "Sixth Street",
+        time: ["Morning", "Afternoon"],
         choices: [
           {
             text: "(Choices don't matter)",
@@ -2095,7 +3450,7 @@ export const agentsData: Agent[] = [
       {
         id: "ye_shunguang_fun_01",
         type: "Fun",
-        title: "Hotpot Restaurant",
+        title: "The Simmer",
         location: "Lumina Square",
       },
       {
@@ -2157,7 +3512,8 @@ export const agentsData: Agent[] = [
         id: "ye_shunguang_rnd_01",
         type: "Random",
         title: "Random Play Branch",
-        location: "Failume Heights (Evening)",
+        location: "Failume Heights",
+        time: ["Evening"],
         choices: [
           {
             text: "(Choices don't matter)",
@@ -2169,7 +3525,8 @@ export const agentsData: Agent[] = [
         id: "ye_shunguang_rnd_02",
         type: "Random",
         title: "Aqua Mirage Aquarium",
-        location: "Fantasy Resort (Morning - Afternoon - Evening)",
+        location: "Fantasy Resort",
+        time: ["Morning", "Afternoon", "Evening"],
         choices: [
           {
             text: "The little fish will have a better life.",
@@ -2189,7 +3546,8 @@ export const agentsData: Agent[] = [
         id: "ye_shunguang_rnd_03",
         type: "Random",
         title: "N.E.P.S.",
-        location: "Lumina Square (Morning - Afternoon - Evening)",
+        location: "Lumina Square",
+        time: ["Morning", "Afternoon", "Evening"],
         choices: [
           {
             text: "You can add each other on Knock Knock.",
@@ -2205,7 +3563,9 @@ export const agentsData: Agent[] = [
         id: "ye_shunguang_rnd_04",
         type: "Random",
         title: "Near HIA Club",
-        location: "Lumina Square (Morning - Afternoon - Evening)",
+        location: "Lumina Square",
+        time: ["Morning", "Afternoon", "Evening"],
+        image: "/event/ye_shunguang/ye_shunguang_rnd_04.webp",
         choices: [
           {
             text: "(Choices don't matter)",
@@ -2217,7 +3577,8 @@ export const agentsData: Agent[] = [
         id: "ye_shunguang_rnd_05",
         type: "Random",
         title: "Coastal Fishing Spot",
-        location: "Port Elpis (Morning - Afternoon - Evening)",
+        location: "Port Elpis",
+        time: ["Morning", "Afternoon", "Evening"],
         choices: [
           {
             text: "(Choices don't matter)",
@@ -2229,7 +3590,8 @@ export const agentsData: Agent[] = [
         id: "ye_shunguang_rnd_06",
         type: "Random",
         title: "Counter",
-        location: "Random Play (Morning - Afternoon - Evening)",
+        location: "Random Play",
+        time: ["Morning", "Afternoon", "Evening"],
         choices: [
           {
             text: "Wow!",
@@ -2259,35 +3621,520 @@ export const agentsData: Agent[] = [
     isWip: true,
     events: [],
   },
-  // {
-  //   id: "yixuan",
-  //   name: "Yixuan",
-  //   attribute: "Ether",
-  //   specialAttribute: "Auric Ink",
-  //   specialty: "Rupture",
-  //   faction: "Yunkui Summit",
-  //   rarity: "S",
-  //   color: "#f9e88c",
-  //   images: ["/agent/Yixuan.webp", "/outfit/Yixuan_Trails_of_Ink.webp"],
-  //   version: "2.0",
-  //   events: [],
-  // },
-  // {
-  //   id: "yuzuha",
-  //   name: "Yuzuha",
-  //   fullName: "Ukinami Yuzuha",
-  //   attribute: "Physical",
-  //   specialty: "Support",
-  //   faction: "Spook Shack",
-  //   rarity: "S",
-  //   color: "#f6e2c0",
-  //   images: [
-  //     "/agent/Ukinami_Yuzuha.webp",
-  //     "/outfit/Ukinami_Yuzuha_Tanuki_in_Broad_Daylight.webp",
-  //   ],
-  //   version: "2.1",
-  //   events: [],
-  // },
+  {
+    id: "yixuan",
+    name: "Yixuan",
+    rarity: "S",
+    attribute: "Ether",
+    specialAttribute: "Auric Ink",
+    specialty: "Rupture",
+    birthDate: "December 03",
+    species: "Human",
+    faction: "Yunkui Summit",
+    color: "#f9e88c",
+    images: ["/agent/Yixuan.webp", "/outfit/Yixuan_Trails_of_Ink.webp"],
+    version: "2.0",
+    events: [
+      // INVITATION EVENTS
+      {
+        id: "yixuan_inv_01",
+        type: "Invites",
+        title: "A Trip Together",
+        location: "Lumina Square",
+        choices: [
+          {
+            text: "What do you think about it, Shifu?",
+            result: "Normal",
+          },
+          {
+            text: "Any tips, Shif? I'd love to know!",
+            result: "Significant",
+          },
+        ],
+      },
+      {
+        id: "yixuan_inv_02",
+        type: "Invites",
+        title: "Beverage Training",
+        location: "Failume Heights",
+        choices: [
+          {
+            text: "That's a level of meditation only you could achieve, Shifu.",
+            result: "Significant",
+          },
+          {
+            text: "Is that training? It sounds like torture!",
+            result: "Normal",
+          },
+        ],
+      },
+      {
+        id: "yixuan_inv_03",
+        type: "Invites",
+        title: "Land of Vibrant Life",
+        location: "Reverb Arena",
+        choices: [
+          {
+            text: "Sometimes I really miss the old days.",
+            result: "Normal",
+          },
+          {
+            text: "I'll always remember the time I spent with you, Shifu.",
+            result: "Significant",
+          },
+        ],
+      },
+      {
+        id: "yixuan_inv_04",
+        type: "Invites",
+        title: "Sound of the Tide",
+        location: "Port Elpis",
+        choices: [
+          {
+            text: "I see...",
+            result: "Normal",
+          },
+          {
+            text: "I think you'll have good fortune, Shifu.",
+            result: "Significant",
+          },
+        ],
+      },
+      // WISH EVENTS
+      {
+        id: "yixuan_01",
+        type: "Wish",
+        title: "An Unfinished Story",
+        location: "Failume Heights - Devon Pawnshop",
+      },
+      {
+        id: "yixuan_02",
+        type: "Wish",
+        title: "Qingming Birds",
+        location: "Failume Heights - Fluffy",
+      },
+      {
+        id: "yixuan_03",
+        type: "Wish",
+        title: "The Taste of Happiness",
+        location: "Failume Heights - Tong Sui Shop",
+      },
+      {
+        id: "yixuan_04",
+        type: "Wish",
+        title: "Like Today",
+        location: "Failume Heights - Seagaze Road",
+      },
+      {
+        id: "yixuan_05",
+        type: "Wish",
+        title: "Herbs",
+        location: "Failume Heights - Peace Herbal",
+      },
+      // FUN EVENTS
+      {
+        id: "yixuan_fun_01",
+        type: "Fun",
+        title: "Capsule Hotel",
+        location: "Lumina Square",
+      },
+      {
+        id: "yixuan_fun_02",
+        type: "Fun",
+        title: "Cyclical Destiny Sculpture",
+        location: "Failume Heights",
+      },
+      {
+        id: "yixuan_fun_03",
+        type: "Fun",
+        title: "Suibian Temple",
+        location: "Failume Heights",
+      },
+      {
+        id: "yixuan_fun_04",
+        type: "Fun",
+        title: "Fluffy",
+        location: "Failume Heights",
+      },
+      {
+        id: "yixuan_fun_05",
+        type: "Fun",
+        title: "Good Goods",
+        location: "Failume Heights",
+      },
+      {
+        id: "yixuan_fun_06",
+        type: "Fun",
+        title: "Near Cable Car",
+        location: "Failume Heights",
+      },
+      {
+        id: "yixuan_fun_07",
+        type: "Fun",
+        title: "Seagaze Road",
+        location: "Failume Heights",
+      },
+      {
+        id: "yixuan_fun_08",
+        type: "Fun",
+        title: "Godfinger",
+        location: "Sixth Street",
+      },
+      {
+        id: "yixuan_fun_09",
+        type: "Fun",
+        title: "Newsstand",
+        location: "Sixth Street",
+      },
+      // RANDOM ENCOUNTERS
+      {
+        id: "yixuan_rnd_01",
+        type: "Random",
+        title: "Fluffy",
+        location: "Failume Heights",
+        time: ["Morning", "Afternoon", "Evening"],
+        choices: [
+          {
+            text: "Looks like it's hopeless.",
+            result: "Normal",
+          },
+          {
+            text: "I'm sure Shifu has an idea.",
+            result: "Significant",
+          },
+        ],
+      },
+      {
+        id: "yixuan_rnd_02",
+        type: "Random",
+        title: "Good Goods",
+        location: "Failume Heights",
+        time: ["Morning", "Afternoon", "Evening"],
+        choices: [
+          {
+            text: "I see.",
+            result: "Normal",
+          },
+          {
+            text: "You've got a real talent for making new friends!",
+            result: "Significant",
+          },
+        ],
+      },
+      {
+        id: "yixuan_rnd_03",
+        type: "Random",
+        title: "Talking to a Nervous Office Worker",
+        location: "Failume Heights",
+        time: ["Morning", "Afternoon", "Evening"],
+        choices: [
+          {
+            text: "You'd best take what Shifu says seriously!",
+            result: "Significant",
+          },
+          {
+            text: "Be sure to look after your pets.",
+            result: "Normal",
+          },
+        ],
+      },
+      {
+        id: "yixuan_rnd_04",
+        type: "Random",
+        title: "Talking to an Old Man",
+        location: "Failume Heights",
+        time: ["Morning", "Afternoon", "Evening"],
+        choices: [
+          {
+            text: "Was there really a theft? I never heard about it...",
+            result: "Normal",
+          },
+          {
+            text: "You're a great actor, Shifu!",
+            result: "Significant",
+          },
+        ],
+      },
+      {
+        id: "yixuan_rnd_05",
+        type: "Random",
+        title: "Talking to Two Girls",
+        location: "Failume Heights",
+        time: ["Morning", "Afternoon", "Evening"],
+        choices: [
+          {
+            text: "That's right!",
+            result: "Normal",
+          },
+          {
+            text: "I'm lucky to have such a great Shifu.",
+            result: "Significant",
+          },
+        ],
+      },
+      {
+        id: "yixuan_rnd_06",
+        type: "Random",
+        title: "Yum Cha Sin",
+        location: "Failume Heights",
+        time: ["Morning", "Afternoon", "Evening"],
+        choices: [
+          {
+            text: "Whatever works.",
+            result: "Decrease",
+          },
+          {
+            text: "I'm just happy to get the chance to be out with you.",
+            result: "Significant",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: "yuzuha",
+    name: "Yuzuha",
+    fullName: "Ukinami Yuzuha",
+    rarity: "S",
+    attribute: "Physical",
+    specialty: "Support",
+    birthDate: "November 02",
+    species: "Human",
+    faction: "Spook Shack",
+    color: "#f6e2c0",
+    images: [
+      "/agent/Ukinami_Yuzuha.webp",
+      "/outfit/Ukinami_Yuzuha_Tanuki_in_Broad_Daylight.webp",
+    ],
+    version: "2.1",
+    events: [
+      // INVITATION EVENTS
+      {
+        id: "ukinami_yuzuha_inv_01",
+        type: "Invites",
+        title: "Good Omen",
+        location: "Failume Heights - A-Shuo",
+        choices: [
+          {
+            text: "About relationships.",
+            result: "Significant",
+          },
+          {
+            text: "About wealth.",
+            result: "Normal",
+          },
+          {
+            text: "About academics or career.",
+            result: "Normal",
+          },
+        ],
+      },
+      {
+        id: "ukinami_yuzuha_inv_02",
+        type: "Invites",
+        title: "Observation Log",
+        location: "Failume Heights - Yum Cha Sin",
+        choices: [
+          { text: "Yes.", result: "Significant" },
+          { text: "No.", result: "Normal" },
+        ],
+      },
+      {
+        id: "ukinami_yuzuha_inv_03",
+        type: "Invites",
+        title: "Sea of Plenty",
+        location: "Port Elpis",
+        choices: [
+          { text: "Ocean.", result: "Normal" },
+          { text: "Land.", result: "Normal" },
+          { text: "Sky.", result: "Significant" },
+        ],
+      },
+      {
+        id: "ukinami_yuzuha_inv_04",
+        type: "Invites",
+        title: "Story in Progress",
+        location: "Sixth Street",
+        choices: [
+          {
+            text: "(Choices don't matter)",
+            result: "Normal",
+          },
+        ],
+      },
+      // WISH EVENTS
+      {
+        id: "ukinami_yuzuha_wish_01",
+        type: "Wish",
+        title: "Through Thick and Thin",
+        location: "Failume Heights - Peace Herbal",
+      },
+      {
+        id: "ukinami_yuzuha_wish_02",
+        type: "Wish",
+        title: "Strange Tenant",
+        location: "Failume Heights - Check Inn",
+      },
+      {
+        id: "ukinami_yuzuha_wish_03",
+        type: "Wish",
+        title: "Memories About Old Items",
+        location: "Failume Heights - Good Goods",
+      },
+      {
+        id: "ukinami_yuzuha_wish_04",
+        type: "Wish",
+        title: "Color of the Sky",
+        location: "Failume Heights - Observation Deck",
+      },
+      {
+        id: "ukinami_yuzuha_wish_05",
+        type: "Wish",
+        title: "Shower Tips",
+        location: "Failume Heights - Fluffy",
+      },
+      // FUN EVENTS
+      {
+        id: "ukinami_yuzuha_fun_01",
+        type: "Fun",
+        title: "Devon Pawnshop",
+        location: "Failume Heights",
+      },
+      {
+        id: "ukinami_yuzuha_fun_02",
+        type: "Fun",
+        title: "Coff Cafe Stall",
+        location: "Failume Heights",
+      },
+      {
+        id: "ukinami_yuzuha_fun_03",
+        type: "Fun",
+        title: "Yum Cha Sin",
+        location: "Failume Heights",
+      },
+      {
+        id: "ukinami_yuzuha_fun_04",
+        type: "Fun",
+        title: "Boobox",
+        location: "Failume Heights",
+      },
+      {
+        id: "ukinami_yuzuha_fun_05",
+        type: "Fun",
+        title: "Playground",
+        location: "Lumina Square",
+      },
+      {
+        id: "ukinami_yuzuha_fun_06",
+        type: "Fun",
+        title: "Quality Tea",
+        location: "Lumina Square",
+      },
+      {
+        id: "ukinami_yuzuha_fun_07",
+        type: "Fun",
+        title: "Box Galaxy",
+        location: "Sixth Street",
+      },
+      {
+        id: "ukinami_yuzuha_fun_08",
+        type: "Fun",
+        title: "Random Play",
+        location: "Sixth Street",
+      },
+      // RANDOM ENCOUNTERS
+      {
+        id: "ukinami_yuzuha_rnd_01",
+        type: "Random",
+        title: "Balabala Tong Sui",
+        location: "Failume Heights",
+        time: ["Morning", "Afternoon"],
+        choices: [
+          {
+            text: "(Link arms with Yuzuha)",
+            result: "Normal",
+          },
+          {
+            text: "(Rest your head on Yuzuha's shoulder)",
+            result: "Significant",
+          },
+        ],
+      },
+      {
+        id: "ukinami_yuzuha_rnd_02",
+        type: "Random",
+        title: "Good Goods",
+        location: "Failume Heights",
+        time: ["Morning", "Afternoon", "Evening"],
+        choices: [
+          {
+            text: "(Choices don't matter)",
+            result: "Normal",
+          },
+        ],
+      },
+      {
+        id: "ukinami_yuzuha_rnd_03",
+        type: "Random",
+        title: "Mystic Wares",
+        location: "Failume Heights",
+        time: ["Morning", "Afternoon"],
+        choices: [
+          {
+            text: "Thanks, Yuzuha!",
+            result: "Normal",
+          },
+          {
+            text: "Wouldn't have made it without you, Yuzuha.",
+            result: "Normal",
+          },
+          {
+            text: "As expected from Yuzuha, the Prank Queen!",
+            result: "Significant",
+          },
+        ],
+      },
+      {
+        id: "ukinami_yuzuha_rnd_04",
+        type: "Random",
+        title: "Random Play Branch",
+        location: "Failume Heights",
+        time: ["Morning", "Afternoon"],
+        choices: [
+          {
+            text: "(Choices don't matter)",
+            result: "Normal",
+          },
+        ],
+      },
+      {
+        id: "ukinami_yuzuha_rnd_05",
+        type: "Random",
+        title: "Yum Cha Sin",
+        location: "Failume Heights",
+        time: ["Morning", "Afternoon"],
+        choices: [
+          {
+            text: "(Choices don't matter)",
+            result: "Normal",
+          },
+        ],
+      },
+      {
+        id: "ukinami_yuzuha_rnd_06",
+        type: "Random",
+        title: "Gravity Cinema",
+        location: "Lumina Square",
+        time: ["Evening"],
+        choices: [
+          {
+            text: "(Choices don't matter)",
+            result: "Normal",
+          },
+        ],
+      },
+    ],
+  },
   {
     id: "zhao",
     name: "Zhao",
@@ -2448,7 +4295,9 @@ export const agentsData: Agent[] = [
         id: "zhao_rnd_01",
         type: "Random",
         title: "Beaverson Beauty Salon",
-        location: "Lumina Square (Morning - Afternoon - Evening)",
+        location: "Lumina Square",
+        time: ["Morning", "Afternoon", "Evening"],
+        image: "/event/zhao/zhao_rnd_01.webp",
         choices: [
           {
             text: "Yo, just spotted you and had to say hi!",
@@ -2464,7 +4313,8 @@ export const agentsData: Agent[] = [
         id: "zhao_rnd_02",
         type: "Random",
         title: "Lumina Galleria",
-        location: "Lumina Square (Morning - Afternoon - Evening)",
+        location: "Lumina Square",
+        time: ["Morning", "Afternoon", "Evening"],
         choices: [
           {
             text: "That's totally up your alley.",
@@ -2480,7 +4330,8 @@ export const agentsData: Agent[] = [
         id: "zhao_rnd_03",
         type: "Random",
         title: "SREC Poster",
-        location: "Lumina Square (Morning - Afternoon - Evening)",
+        location: "Lumina Square",
+        time: ["Morning", "Afternoon", "Evening"],
         choices: [
           {
             text: "Sixth Street!",
@@ -2500,7 +4351,8 @@ export const agentsData: Agent[] = [
         id: "zhao_rnd_04",
         type: "Random",
         title: "Waterfall Soup",
-        location: "Lumina Square (Morning - Afternoon - Evening)",
+        location: "Lumina Square",
+        time: ["Morning", "Afternoon", "Evening"],
         choices: [
           {
             text: "Extra meaty pork noodles!",
@@ -2523,7 +4375,8 @@ export const agentsData: Agent[] = [
         id: "zhao_rnd_05",
         type: "Random",
         title: "Cable Car: Failume Heights Station",
-        location: "Failume Heights (Morning - Afternoon - Evening)",
+        location: "Failume Heights",
+        time: ["Morning", "Afternoon", "Evening"],
         choices: [
           {
             text: "Want a hint?",
@@ -2539,7 +4392,8 @@ export const agentsData: Agent[] = [
         id: "zhao_rnd_06",
         type: "Random",
         title: "Good Goods",
-        location: "Failume Heights (Morning - Afternoon - Evening)",
+        location: "Failume Heights",
+        time: ["Morning", "Afternoon", "Evening"],
         choices: [
           {
             text: "Are we really competing over this too!",

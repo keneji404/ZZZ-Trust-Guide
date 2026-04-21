@@ -44,7 +44,28 @@ export default function EventCard({ event }: { event: TrustEvent }) {
           <h3 className="text-md text-foreground text-shadow-[0_0_1px_black]">
             {event.title}
           </h3>
-          <p className="text-xs text-foreground/75">{event.location}</p>
+          <div className="flex flex-wrap items-center gap-2 mt-0.5">
+            <p className="text-xs text-foreground text-shadow-[0_0_1px_black]">
+              {event.location}
+            </p>
+            {event.time && event.time.length > 0 && (
+              <div className="flex items-center gap-1.5">
+                {event.time.map((t) => {
+                  const iconName = t.toLowerCase().replace(/\s+/g, "_");
+
+                  return (
+                    <img
+                      key={t}
+                      src={`/time/${iconName}.png`}
+                      alt={t}
+                      title={`Available: ${t}`}
+                      className={`w-4 h-4 object-contain ${isCompleted ? "opacity-50" : "opacity-100"}`}
+                    />
+                  );
+                })}
+              </div>
+            )}
+          </div>
         </div>
 
         {/* buttons */}
@@ -86,7 +107,7 @@ export default function EventCard({ event }: { event: TrustEvent }) {
 
       {/* location image */}
       {event.image && (
-        <div className="mb-4 w-full aspect-video rounded-lg overflow-hidden relative">
+        <div className="mt-4 w-full aspect-video rounded-lg overflow-hidden relative border-2 border-border-soft">
           <img
             src={event.image}
             alt={`Location for ${event.title}`}
